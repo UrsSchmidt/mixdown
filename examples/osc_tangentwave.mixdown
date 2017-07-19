@@ -1,0 +1,2 @@
+/* tangent wave example */
+tan(A4*t*tau);

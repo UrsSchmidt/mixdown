@@ -1,0 +1,2 @@
+/* moog-like wave example */
+moog(A4*t*tau);

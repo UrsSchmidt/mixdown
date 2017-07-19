@@ -1,0 +1,2 @@
+/* square wave example */
+squ(A4*t*tau);

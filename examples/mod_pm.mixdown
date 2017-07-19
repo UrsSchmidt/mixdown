@@ -1,0 +1,2 @@
+/* phase modulation example */
+sin(A4*t*tau+deg(90)*sin(A4*1.5*t*tau));

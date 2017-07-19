@@ -1,0 +1,2 @@
+/* exponent modulation example */
+parab(A4*t*tau,20*t/l+1);

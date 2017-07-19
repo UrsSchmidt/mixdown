@@ -1,0 +1,2 @@
+/* 8 - Basic PWM */
+pulse(A4*t*tau,min(0.2+sin(symm(dB(-2)*t*tau,0.25))*0.77^2,1))*0.92*dB(-12);

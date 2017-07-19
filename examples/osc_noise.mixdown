@@ -1,0 +1,2 @@
+/* noise example */
+noise(A4*t*tau);

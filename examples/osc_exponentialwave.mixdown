@@ -1,0 +1,2 @@
+/* exponential wave example */
+exptl(A4*t*tau);

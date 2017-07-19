@@ -1,0 +1,2 @@
+/* 6 - Basic Noise */
+noise(A4*t*tau)*dB(-8);

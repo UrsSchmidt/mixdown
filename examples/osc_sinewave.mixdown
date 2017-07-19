@@ -1,0 +1,2 @@
+/* sine wave example */
+sin(A4*t*tau);

@@ -1,0 +1,3 @@
+/* interval=7 (pitch offset in semitones) and
+   detune=-0.02 (fine tuning in semitones, 0.01 is one cent) example */
+sin(A4*t*tau)*0.5+sin(A4*H^(7-0.02)*t*tau)*0.5;

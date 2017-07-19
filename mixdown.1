@@ -1,0 +1,45 @@
+.TH MIXDOWN 1
+.SH NAME
+mixdown \- a sound generator for the command line
+.SH SYNOPSIS
+.B mixdown
+[\fIOPTION\fR...] [[input=\fIFILE\fR] output=\fIFILE\fR]
+.SH DESCRIPTION
+.B mixdown
+A sound generator for the command line written by Urs Schmidt.
+.SH OPTIONS
+.TP
+.B \-b, \-\-bps=\fINUM\fR
+Bit per sample (8, 16, 24, 32) [default=\fB16\fR]
+.TP
+.B \-c, \-\-channels=\fINUM\fR
+Channels (1, 2) [default=\fB2\fR]
+.TP
+.B \-f, \-\-format=\fIFMT\fR
+File format (AIFF, WAVE) [default=\fBWAVE\fR]
+.TP
+.B \-l, \-\-length=\fINUM\fR
+Length in seconds [default=\fB1.0\fR]
+.TP
+.B \-r, \-\-reverse
+Reverse samples
+.TP
+.B \-s, \-\-samplerate=\fINUM\fR
+Sample rate in Hz [default=\fB44100\fR]
+.TP
+.B \-v, \-\-verbose
+Print debug information
+.TP
+.B \\-w, \-\-nowarn
+Suppress some warnings
+.TP
+.B -?, \-\-help
+Give this help list
+.TP
+.B \-\-usage
+Give a short usage message
+.TP
+.B \-V, \-\-version
+Print program version
+.SH EXAMPLE
+\fBecho 'sin(A4*t*tau)*fade(t,0,1,l,0);' | mixdown | aplay -q\fR

@@ -1,0 +1,2 @@
+/* fade in example */
+sin(A4*t*tau)*fade(t,0,0,l,1);

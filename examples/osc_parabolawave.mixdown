@@ -1,0 +1,2 @@
+/* parabola wave example */
+parab(A4*t*tau,3);

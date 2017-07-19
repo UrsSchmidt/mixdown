@@ -1,0 +1,2 @@
+/* triangle wave example */
+tri(A4*t*tau);

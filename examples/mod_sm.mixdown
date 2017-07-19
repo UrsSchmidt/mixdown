@@ -1,0 +1,2 @@
+/* symmetry modulation example */
+sin(symm(A4*t*tau,sin(dB(0)*t*tau)));

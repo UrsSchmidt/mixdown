@@ -1,0 +1,2 @@
+/* rising saw wave example */
+sawr(A4*t*tau);

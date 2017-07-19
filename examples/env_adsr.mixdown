@@ -1,0 +1,2 @@
+/* ADSR example */
+sin(A4*t*tau)*adsr(t,0.2*l,0.8*l,0.2*l,0.2*l,0.5,0.2*l);

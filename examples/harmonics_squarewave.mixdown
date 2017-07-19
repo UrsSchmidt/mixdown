@@ -1,0 +1,28 @@
+/* harmonics example, square wave */
+(
+sin(A4*t*tau)+
+sin(A4*t*tau*3)/3+
+sin(A4*t*tau*5)/5+
+sin(A4*t*tau*7)/7+
+sin(A4*t*tau*9)/9+
+sin(A4*t*tau*11)/11+
+sin(A4*t*tau*13)/13+
+sin(A4*t*tau*15)/15+
+sin(A4*t*tau*17)/17+
+sin(A4*t*tau*19)/19+
+sin(A4*t*tau*21)/21+
+sin(A4*t*tau*23)/23+
+sin(A4*t*tau*25)/25+
+sin(A4*t*tau*27)/27+
+sin(A4*t*tau*29)/29+
+sin(A4*t*tau*31)/31+
+sin(A4*t*tau*33)/33+
+sin(A4*t*tau*35)/35+
+sin(A4*t*tau*37)/37+
+sin(A4*t*tau*39)/39+
+sin(A4*t*tau*41)/41+
+sin(A4*t*tau*43)/43+
+sin(A4*t*tau*45)/45+
+sin(A4*t*tau*47)/47+
+sin(A4*t*tau*49)/49
+)/* *4/pi */;

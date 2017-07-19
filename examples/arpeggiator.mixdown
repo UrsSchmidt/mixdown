@@ -1,0 +1,2 @@
+/* arpeggiator example */
+sin(phi(arp(t,0.1,C4,E4,G4,B4)));

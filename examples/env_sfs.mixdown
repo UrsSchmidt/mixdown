@@ -1,0 +1,2 @@
+/* Soundforum Synth envelope example */
+sin(A4*t*tau)*sfs(t,0.2*l,0.8*l,0,50,0.25,35);

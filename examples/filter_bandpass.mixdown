@@ -1,0 +1,2 @@
+/* 2-pole bandpass filter @440Hz example */
+filter2(noise(t),0.03039353145,0,-0.03039353145,-1.935403672,0.9392129371);

@@ -1,0 +1,2 @@
+/* 7 - Basic Detune */
+(sawr(A4*t*tau)*0.92+sawr(A4*H^0.02*t*tau)*0.92)*dB(-11);

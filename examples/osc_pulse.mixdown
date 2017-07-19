@@ -1,0 +1,2 @@
+/* pulse wave example */
+pulse(A4*t*tau,0.5)*0.5;

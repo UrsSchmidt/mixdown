@@ -1,0 +1,2 @@
+/* hard sync two oscillators */
+sin(sync(A4*t*tau,A4*H^14*t*tau));

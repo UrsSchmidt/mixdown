@@ -1,0 +1,2 @@
+/* sample and hold example */
+sin(phi(A4*2^noise(dB(0)*floor(t/0.1)*0.1*tau)));

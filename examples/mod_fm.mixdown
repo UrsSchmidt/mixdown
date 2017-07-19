@@ -1,0 +1,2 @@
+/* frequency modulation example */
+sin(phi(A3+sin(A4*t*tau)*A3*10));
