@@ -196,29 +196,29 @@ double arp(double t, double t2, size_t n_count, double n_arr[]) {
 
 /* math */
 
-// sin
+/* sin */
 
-// cos
+/* cos */
 
-// tan
+/* tan */
 
-// asin
+/* asin */
 
-// acos
+/* acos */
 
-// atan
+/* atan */
 
-// exp
+/* exp */
 
-// ln (log)
+/* ln (log) */
 
-// log10
+/* log10 */
 
-// sqrt
+/* sqrt */
 
-// ceil
+/* ceil */
 
-// floor
+/* floor */
 
 double max(size_t n_count, double n_arr[]) {
     double result = n_arr[0];
@@ -238,7 +238,7 @@ double min(size_t n_count, double n_arr[]) {
     return result;
 }
 
-// abs (fabs)
+/* abs (fabs) */
 
 double sgn(double n) {
     return (n > 0.0) - (n < 0.0);

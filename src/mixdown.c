@@ -496,8 +496,8 @@ int main(int argc, char** argv) {
     arguments.samplerate = 44100;
     arguments.verbose = false;
     arguments.nowarn = false;
-    arguments.input = NULL; // stdin
-    arguments.output = NULL; // stdout
+    arguments.input = NULL; /* stdin */
+    arguments.output = NULL; /* stdout */
     argp_parse(&argp, argc, argv, 0, 0, &arguments);
     if (arguments.verbose) {
         fprintf(stderr, "bps = %i\n", arguments.bps);
