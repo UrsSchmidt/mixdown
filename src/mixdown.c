@@ -34,7 +34,7 @@ static struct argp_option options[] = {
     { "length",     'l', "NUM",  0, "Length in seconds [default=1.0]" },
     { "reverse",    'r', 0,      0, "Reverse samples" },
     { "samplerate", 's', "NUM",  0, "Sample rate in Hz [default=44100]" },
-    { "verbose",    'v', 0,      0, "Print debug information" },
+    { "verbose",    'v', 0,      0, "Produce verbose output" },
     { "nowarn",     'w', 0,      0, "Suppress some warnings" },
     { 0 }
 };
