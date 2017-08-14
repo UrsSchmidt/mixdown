@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include "shared.h"
 
-void fwrite_aiff(struct arguments* arguments, uint32_t data_size, uint8_t* data, FILE* file);
+void fwrite_aiff(struct arguments *arguments, uint32_t data_size, uint8_t *data, FILE *file);
 
-void fwrite_wave(struct arguments* arguments, uint32_t data_size, uint8_t* data, FILE* file);
+void fwrite_wave(struct arguments *arguments, uint32_t data_size, uint8_t *data, FILE *file);
 
 #endif

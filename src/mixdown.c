@@ -18,9 +18,9 @@
 #define MAX_24 8388607
 #define MAX_32 2147483647
 
-extern FILE* yyin;
+extern FILE *yyin;
 
-const char* argp_program_version = "mixdown 1.0";
+const char *argp_program_version = "mixdown 1.0";
 
 static char doc[] = "mixdown -- a sound generator for the command line written by Urs Schmidt\n"
                     "try: echo 'sin(A4*t*tau)*fade(t,0,1,l,0);' | mixdown | aplay -q";
@@ -39,8 +39,8 @@ static struct argp_option options[] = {
     { 0 }
 };
 
-static error_t parse_opt(int key, char* arg, struct argp_state* state) {
-    struct arguments* arguments = state->input;
+static error_t parse_opt(int key, char *arg, struct argp_state *state) {
+    struct arguments *arguments = state->input;
     uint32_t i;
     double d;
     switch (key) {
@@ -105,7 +105,7 @@ static error_t parse_opt(int key, char* arg, struct argp_state* state) {
 
 static struct argp argp = { options, parse_opt, args_doc, doc };
 
-void print_node(uint32_t depth, struct ast_node* node) {
+void print_node(uint32_t depth, struct ast_node *node) {
     if (!node)
         return;
     if (node->node_type != NT_ARGUMENT_LIST)
@@ -157,7 +157,7 @@ void print_node(uint32_t depth, struct ast_node* node) {
     }
 }
 
-double calculate_node(double l, double t, struct ast_node* node) {
+double calculate_node(double l, double t, struct ast_node *node) {
     if (!node)
         return 0.0;
     switch (node->node_type) {
@@ -193,15 +193,15 @@ double calculate_node(double l, double t, struct ast_node* node) {
         return 0.0;
     }
     case NT_FUNCTION_CALL: {
-        const char* identifier = ((struct function_call_node*) node)->identifier;
+        const char *identifier = ((struct function_call_node*) node)->identifier;
         warn_once(UNDEFINED_FUNCTION, identifier);
         return 0.0;
     }
     case NT_FUNCTION_CALL_ARGUMENT_LIST: {
-        struct function_call_argument_list_node* function_call_argument_list_node = (struct function_call_argument_list_node*) node;
-        const char* identifier = function_call_argument_list_node->identifier;
-        struct ast_node* an = function_call_argument_list_node->argument_list;
-        struct argument_list_node* aln = NULL;
+        struct function_call_argument_list_node *function_call_argument_list_node = (struct function_call_argument_list_node*) node;
+        const char *identifier = function_call_argument_list_node->identifier;
+        struct ast_node *an = function_call_argument_list_node->argument_list;
+        struct argument_list_node *aln = NULL;
         double argv[MAX_FUNCTION_ARGS];
         for (uint32_t argc = 1; argc <= MAX_FUNCTION_ARGS; argc++) {
             if (an->node_type != NT_ARGUMENT_LIST) {
@@ -401,7 +401,7 @@ double calculate_node(double l, double t, struct ast_node* node) {
         exit(EXIT_FAILURE);
         return 0.0;
     case NT_IDENTIFIER: {
-        const char* identifier = ((struct identifier_node*) node)->identifier;
+        const char *identifier = ((struct identifier_node*) node)->identifier;
         if (!strcmp(identifier, "l"))
             return l;
         if (!strcmp(identifier, "t"))
@@ -450,7 +450,7 @@ double calculate_node(double l, double t, struct ast_node* node) {
     }
 }
 
-void free_node(struct ast_node* node) {
+void free_node(struct ast_node *node) {
     if (!node)
         return;
     switch (node->node_type) {
@@ -485,7 +485,7 @@ void free_node(struct ast_node* node) {
     free(node);
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
     /* argp */
     struct arguments arguments;
     arguments.bps = 16;
@@ -520,7 +520,7 @@ int main(int argc, char** argv) {
             return 1;
         }
     }
-    struct ast_node* root = NULL;
+    struct ast_node *root = NULL;
     const int retval_yyparse = yyparse(&root);
     if (arguments.input && yyin)
         fclose(yyin);
@@ -625,7 +625,7 @@ int main(int argc, char** argv) {
     }
 
     /* write audio data */
-    FILE* file;
+    FILE *file;
     if (arguments.output) {
         /* to file */
         file = fopen(arguments.output, "wb");

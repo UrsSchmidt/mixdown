@@ -24,35 +24,35 @@ struct ast_node {
 
 struct unary_node {
     NODE_TYPE node_type;
-    struct ast_node* right;
+    struct ast_node *right;
 };
 
 struct binary_node {
     NODE_TYPE node_type;
-    struct ast_node* left;
-    struct ast_node* right;
+    struct ast_node *left;
+    struct ast_node *right;
 };
 
 struct function_call_node {
     NODE_TYPE node_type;
-    char* identifier;
+    char *identifier;
 };
 
 struct function_call_argument_list_node {
     NODE_TYPE node_type;
-    char* identifier;
-    struct ast_node* argument_list;
+    char *identifier;
+    struct ast_node *argument_list;
 };
 
 struct argument_list_node {
     NODE_TYPE node_type;
-    struct ast_node* argument;
-    struct ast_node* argument_list;
+    struct ast_node *argument;
+    struct ast_node *argument_list;
 };
 
 struct identifier_node {
     NODE_TYPE node_type;
-    char* identifier;
+    char *identifier;
 };
 
 struct number_node {
@@ -60,18 +60,18 @@ struct number_node {
     double number;
 };
 
-struct ast_node* new_ast_unary_node(NODE_TYPE nt, struct ast_node* right);
+struct ast_node *new_ast_unary_node(NODE_TYPE nt, struct ast_node *right);
 
-struct ast_node* new_ast_binary_node(NODE_TYPE nt, struct ast_node* left, struct ast_node* right);
+struct ast_node *new_ast_binary_node(NODE_TYPE nt, struct ast_node *left, struct ast_node *right);
 
-struct ast_node* new_ast_function_call_node(char* identifier);
+struct ast_node *new_ast_function_call_node(char *identifier);
 
-struct ast_node* new_ast_function_call_argument_list_node(char* identifier, struct ast_node* argument_list);
+struct ast_node *new_ast_function_call_argument_list_node(char *identifier, struct ast_node *argument_list);
 
-struct ast_node* new_ast_argument_list_node(struct ast_node* argument, struct ast_node* argument_list);
+struct ast_node *new_ast_argument_list_node(struct ast_node *argument, struct ast_node *argument_list);
 
-struct ast_node* new_ast_identifier_node(char* identifier);
+struct ast_node *new_ast_identifier_node(char *identifier);
 
-struct ast_node* new_ast_number_node(double number);
+struct ast_node *new_ast_number_node(double number);
 
 #endif

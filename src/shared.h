@@ -18,11 +18,11 @@ struct arguments {
     uint32_t samplerate;
     bool verbose, nowarn;
     /* arguments */
-    char* input;
-    char* output;
+    char *input;
+    char *output;
 };
 
-char* format_tostring(FORMAT format);
+char *format_tostring(FORMAT format);
 
 bool swap_byteorder(FORMAT format);
 

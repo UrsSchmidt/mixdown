@@ -4,7 +4,7 @@
 
 #define WARN_COUNT 20
 
-void error(const char* msg, const char* arg) {
+void error(const char *msg, const char *arg) {
     char temp[strlen(msg) + (arg ? strlen(arg) : 0)];
     if (arg)
         sprintf(temp, msg, arg);
@@ -13,7 +13,7 @@ void error(const char* msg, const char* arg) {
     fprintf(stderr, "Error: %s\n", temp);
 }
 
-void warn(const char* msg, const char* arg) {
+void warn(const char *msg, const char *arg) {
     char temp[strlen(msg) + (arg ? strlen(arg) : 0)];
     if (arg)
         sprintf(temp, msg, arg);
@@ -26,7 +26,7 @@ unsigned long warn_once_arr[WARN_COUNT];
 size_t warn_once_ptr = 0;
 
 /* see: http://www.cse.yorku.ca/~oz/hash.html */
-unsigned long hash(const char* str) {
+unsigned long hash(const char *str) {
     unsigned long result = 5381;
     int c;
     while ((c = *str++))
@@ -34,7 +34,7 @@ unsigned long hash(const char* str) {
     return result;
 }
 
-void warn_once(const char* msg, const char* arg) {
+void warn_once(const char *msg, const char *arg) {
     char temp[strlen(msg) + (arg ? strlen(arg) : 0)];
     if (arg)
         sprintf(temp, msg, arg);
