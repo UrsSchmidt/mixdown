@@ -1,6 +1,7 @@
+#include "logger.h"
+
 #include <stdio.h>
 #include <string.h>
-#include "logger.h"
 
 #define WARN_COUNT 20
 

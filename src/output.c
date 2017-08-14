@@ -1,8 +1,10 @@
+#include "output.h"
+
+#include "shared.h"
+
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
-#include "output.h"
-#include "shared.h"
 
 #define SWAP(x,y) t=c[(x)];c[(x)]=c[(y)];c[(y)]=t;
 

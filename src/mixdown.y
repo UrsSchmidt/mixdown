@@ -1,12 +1,13 @@
 %{
-#include <stddef.h>
 #include "ast.h"
 #include "logger.h"
+
+#include <stddef.h>
 
 int yylex();
 int yyparse();
 
-void yyerror(struct ast_node** root, const char* str) {
+void yyerror(struct ast_node **root, const char *str) {
     error(str, NULL);
 }
 

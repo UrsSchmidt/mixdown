@@ -1,6 +1,7 @@
+#include "shared.h"
+
 #include <stdbool.h>
 #include <stdint.h>
-#include "shared.h"
 
 char *format_tostring(FORMAT format) {
     switch (format) {

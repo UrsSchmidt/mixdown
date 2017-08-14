@@ -1,3 +1,10 @@
+#include "ast.h"
+#include "functions.h"
+#include "logger.h"
+#include "output.h"
+#include "shared.h"
+#include "y.tab.h"
+
 #include <argp.h>
 #include <math.h>
 #include <stdbool.h>
@@ -6,12 +13,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "ast.h"
-#include "functions.h"
-#include "logger.h"
-#include "output.h"
-#include "shared.h"
-#include "y.tab.h"
 
 #define MAX_8  127
 #define MAX_16 32767

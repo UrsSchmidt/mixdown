@@ -1,6 +1,7 @@
+#include "functions.h"
+
 #include <math.h>
 #include <stddef.h>
-#include "functions.h"
 
 double _phi;
 double _samplerate;

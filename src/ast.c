@@ -1,5 +1,6 @@
-#include <stdlib.h>
 #include "ast.h"
+
+#include <stdlib.h>
 
 struct ast_node *new_ast_unary_node(NODE_TYPE nt, struct ast_node *right) {
     struct unary_node *ast_node = malloc(sizeof(struct unary_node));
