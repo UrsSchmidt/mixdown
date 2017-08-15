@@ -4,7 +4,7 @@
 
 # Description
 
-mixdown -- a sound generator for the command line written by Urs Schmidt  
+mixdown -- a sound generator for the command line  
 
 **try**:  
 `echo 'sin(A4*t*tau)*fade(t,0,1,l,0);' | mixdown | aplay -q`  
