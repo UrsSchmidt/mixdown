@@ -16,13 +16,13 @@ int yywrap() {
 }
 %}
 
-%parse-param { struct ast_node** root }
+%parse-param { struct ast_node **root }
 
 %start mixdown
 
 %union {
-    struct ast_node* ast;
-    char* identifier;
+    struct ast_node *ast;
+    char *identifier;
     double number;
 }
 
