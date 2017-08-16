@@ -24,7 +24,7 @@ extern FILE *yyin;
 const char *argp_program_version = "mixdown 1.0";
 
 static char doc[] = "mixdown -- a sound generator for the command line\n"
-                    "try: echo 'sin(A4*t*tau)*fade(t,0,1,l,0);' | mixdown | aplay -q";
+                    "Example: echo 'sin(A4*t*tau)*fade(t,0,1,l,0);' | mixdown | aplay -q";
 
 static char args_doc[] = "[[input=FILE] output=FILE]";
 
