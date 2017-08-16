@@ -1,4 +1,4 @@
-# Usage
+# Synopsis
 
 `mixdown [OPTION...] [[input=FILE] output=FILE]`  
 
@@ -6,7 +6,8 @@
 
 mixdown -- a sound generator for the command line  
 
-**try**:  
+# Example
+
 `echo 'sin(A4*t*tau)*fade(t,0,1,l,0);' | mixdown | aplay -q`  
 
 # Options
@@ -366,7 +367,7 @@ The absolute value of n.
 **n**: Some number.  
 The signum of n.  
 
-# Error and warning messages
+# Error and Warning Messages
 
 **fopen failed**  
 The input or output file could not be opened for reading/writing.  
