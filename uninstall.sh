@@ -10,5 +10,5 @@ fi
 
 if [ -f '/usr/local/share/man/man1/mixdown.1' ]; then
     sudo rm '/usr/local/share/man/man1/mixdown.1'
-    sudo mandb
+    sudo mandb -q
 fi

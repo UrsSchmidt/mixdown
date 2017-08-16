@@ -16,5 +16,5 @@ fi
 
 if [ -d '/usr/local/share/man/man1/' ]; then
     sudo cp 'mixdown.1' '/usr/local/share/man/man1/'
-    sudo mandb
+    sudo mandb -q
 fi
