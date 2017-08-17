@@ -518,7 +518,7 @@ int main(int argc, char **argv) {
         yyin = fopen(arguments.input, "r");
         if (!yyin) {
             error(FOPEN_FAILED, arguments.input);
-            return 1;
+            return EXIT_FAILURE;
         }
     }
     struct ast_node *root = NULL;
@@ -527,7 +527,7 @@ int main(int argc, char **argv) {
         fclose(yyin);
     if (retval_yyparse || !root) {
         error(YYPARSE_FAILED, NULL);
-        return 1;
+        return EXIT_FAILURE;
     }
     if (arguments.verbose)
         print_node(0, root);
@@ -632,7 +632,7 @@ int main(int argc, char **argv) {
         file = fopen(arguments.output, "wb");
         if (!file) {
             error(FOPEN_FAILED, arguments.output);
-            return 1;
+            return EXIT_FAILURE;
         }
     } else {
         /* to stdout */
@@ -653,5 +653,5 @@ int main(int argc, char **argv) {
     if (arguments.verbose)
         fprintf(stderr, "%u samples written\n", datasize / blockalign);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
