@@ -154,7 +154,6 @@ void print_node(uint32_t depth, struct ast_node *node) {
         break;
     default:
         exit(EXIT_FAILURE);
-        return;
     }
 }
 
@@ -214,9 +213,8 @@ double calculate_node(double l, double t, struct ast_node *node) {
                     }
                     const size_t n_count = argc - 2;
                     double n_arr[n_count];
-                    for (size_t i = 0; i < n_count; i++) {
+                    for (size_t i = 0; i < n_count; i++)
                         n_arr[i] = argv[i + 2];
-                    }
                     return arp(argv[0], argv[1], n_count, n_arr);
                 }
                 if (!strcmp(identifier, "fade")) {
@@ -481,7 +479,6 @@ void free_node(struct ast_node *node) {
         break;
     default:
         exit(EXIT_FAILURE);
-        return;
     }
     free(node);
 }
@@ -581,7 +578,7 @@ int main(int argc, char **argv) {
             const uint32_t offset = (arguments.reverse ? datasize - i - blockalign : i) + c * bytepersample;
             switch (arguments.bps) {
             case 8:
-                data[offset] = (uint8_t) ((arguments.format == WAVE) ? 127.5 * (v + 1.0) : (MAX_8 * v));
+                data[offset] = (uint8_t) (MAX_8 * ((arguments.format == WAVE) ? v + 1.0 : v));
                 break;
             case 16: {
                 const int16_t sample = MAX_16 * v;
