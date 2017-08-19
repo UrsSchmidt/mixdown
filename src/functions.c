@@ -63,7 +63,7 @@ double circ(double x) {
 
 double exptl(double x) {
     const double u = fmod(x, M_TAU);
-    const double roundness = 0.00001;
+    static const double roundness = 0.00001;
     return roundness * exp(((u < M_PI) ? u : (M_TAU - u)) * log(1.0 / roundness) / M_PI) * 2.0 - 1.0;
 }
 
