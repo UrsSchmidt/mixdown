@@ -31,7 +31,7 @@ Reverse samples
 Sample rate in Hz \[default=44100\]  
 
 `-v`, `--verbose`  
-Print debug information  
+Produce verbose output  
 
 `-w`, `--nowarn`  
 Suppress some warnings  
