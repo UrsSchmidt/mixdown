@@ -76,7 +76,7 @@ double noise(double x) {
     /* this is the largest ten digit prime number
        there might be a more suitable number for this purpose */
     static const double prime = 9999999967.0;
-    static const double half = prime / 2.0;
+    static const double half = 4999999983.5;
     return fmod((sin(fmod(x, M_TAU) * prime) + 1.0) * half, 2.0) - 1.0;
 }
 
