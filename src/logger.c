@@ -8,19 +8,21 @@
 
 void error(const char *msg, const char *arg) {
     char temp[strlen(msg) + (arg ? strlen(arg) : 0)];
-    if (arg)
+    if (arg) {
         sprintf(temp, msg, arg);
-    else
+    } else {
         strcpy(temp, msg);
+    }
     fprintf(stderr, "Error: %s\n", temp);
 }
 
 void warn(const char *msg, const char *arg) {
     char temp[strlen(msg) + (arg ? strlen(arg) : 0)];
-    if (arg)
+    if (arg) {
         sprintf(temp, msg, arg);
-    else
+    } else {
         strcpy(temp, msg);
+    }
     fprintf(stderr, "Warning: %s\n", temp);
 }
 
@@ -38,10 +40,11 @@ unsigned long hash(const char *str) {
 
 void warn_once(const char *msg, const char *arg) {
     char temp[strlen(msg) + (arg ? strlen(arg) : 0)];
-    if (arg)
+    if (arg) {
         sprintf(temp, msg, arg);
-    else
+    } else {
         strcpy(temp, msg);
+    }
     const unsigned long hashval = hash(temp);
     for (size_t i = 0; i < warn_once_ptr; i++)
         if (warn_once_arr[i] == hashval)

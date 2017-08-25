@@ -73,9 +73,11 @@ double moog(double x) {
 }
 
 double noise(double x) {
-    /* 9999999967 is the largest ten digit prime number
+    /* this is the largest ten digit prime number
        there might be a more suitable number for this purpose */
-    return fmod((sin(fmod(x, M_TAU) * 9999999967.0) + 1.0) * 4999999983.5, 2.0) - 1.0;
+    static const double prime = 9999999967.0;
+    static const double half = prime / 2.0;
+    return fmod((sin(fmod(x, M_TAU) * prime) + 1.0) * half, 2.0) - 1.0;
 }
 
 double parab(double x, double n) {

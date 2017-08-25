@@ -19,6 +19,8 @@
 #define MAX_24 8388607
 #define MAX_32 2147483647
 
+#define in(a,b,c) (((a)<=(b))&&((b)<=(c)))
+
 extern FILE *yyin;
 
 const char *argp_program_version = "mixdown 1.0";
@@ -29,14 +31,14 @@ static char doc[] = "mixdown -- a sound generator for the command line\n"
 static char args_doc[] = "[[input=FILE] output=FILE]";
 
 static struct argp_option options[] = {
-    { "bps",        'b', "NUM",  0, "Bit per sample (8, 16, 24, 32) [default=16]" },
-    { "channels",   'c', "NUM",  0, "Channels (1, 2) [default=2]" },
-    { "format",     'f', "FMT",  0, "File format (AIFF, WAVE) [default=WAVE]" },
-    { "length",     'l', "NUM",  0, "Length in seconds [default=1.0]" },
-    { "reverse",    'r', 0,      0, "Reverse samples" },
-    { "samplerate", 's', "NUM",  0, "Sample rate in Hz [default=44100]" },
-    { "verbose",    'v', 0,      0, "Produce verbose output" },
-    { "nowarn",     'w', 0,      0, "Suppress some warnings" },
+    { "bps",        'b', "NUM", 0, "Bit per sample (8, 16, 24, 32) [default=16]" },
+    { "channels",   'c', "NUM", 0, "Channels (1, 2) [default=2]" },
+    { "format",     'f', "FMT", 0, "File format (AIFF, WAVE) [default=WAVE]" },
+    { "length",     'l', "NUM", 0, "Length in seconds [default=1.0]" },
+    { "reverse",    'r', 0,     0, "Reverse samples" },
+    { "samplerate", 's', "NUM", 0, "Sample rate in Hz [default=44100]" },
+    { "verbose",    'v', 0,     0, "Produce verbose output" },
+    { "nowarn",     'w', 0,     0, "Suppress some warnings" },
     { 0 }
 };
 
@@ -305,7 +307,7 @@ double calculate_node(double l, double t, struct ast_node *node) {
                     const double a = argv[0];
                     const double b = argv[1];
                     if (!strcmp(identifier, "symm")) {
-                        if (!(-1.0 <= b && b <= 1.0))
+                        if (!in(-1.0, b, 1.0))
                             warn_once(CONSTRAINT_VIOLATION, identifier);
                         return symm(a, b);
                     }
@@ -317,7 +319,7 @@ double calculate_node(double l, double t, struct ast_node *node) {
                         return parab(a, b);
                     }
                     if (!strcmp(identifier, "pulse")) {
-                        if (!(-1.0 <= b && b <= 1.0))
+                        if (!in(-1.0, b, 1.0))
                             warn_once(CONSTRAINT_VIOLATION, identifier);
                         return pulse(a, b);
                     }
@@ -354,12 +356,12 @@ double calculate_node(double l, double t, struct ast_node *node) {
                     const double f = argv[5];
                     const double g = argv[6];
                     if (!strcmp(identifier, "adsr")) {
-                        if (!(0.0 <= f && f <= 1.0))
+                        if (!in(0.0, f, 1.0))
                             warn_once(CONSTRAINT_VIOLATION, identifier);
                         return adsr(a, b, c, d, e, f, g);
                     }
                     if (!strcmp(identifier, "sfs")) {
-                        if (!(0.0 <= f && f <= 1.0))
+                        if (!in(0.0, f, 1.0))
                             warn_once(CONSTRAINT_VIOLATION, identifier);
                         return sfs(a, b, c, d, e, f, g);
                     }
@@ -377,7 +379,7 @@ double calculate_node(double l, double t, struct ast_node *node) {
                     const double h = argv[7];
                     const double i = argv[8];
                     if (!strcmp(identifier, "dahdsr")) {
-                        if (!(0.0 <= h && h <= 1.0))
+                        if (!in(0.0, h, 1.0))
                             warn_once(CONSTRAINT_VIOLATION, identifier);
                         return dahdsr(a, b, c, d, e, f, g, h, i);
                     }
@@ -415,21 +417,22 @@ double calculate_node(double l, double t, struct ast_node *node) {
             return M_TAU;
         /* is it a key? */
         const char first = identifier[0];
-        if ('A' <= first && first <= 'G') {
+        if (in('A', first, 'G')) {
             const size_t len = strlen(identifier);
             const char last = identifier[len - 1];
             if ((len == 2 || len == 3) &&
-                ('0' <= last && last <= '8')) {
+                in('0', last, '8')) {
                 /* it is a key */
                 static const int32_t keys[] = { 1, 3, -8, -6, -4, -3, -1 };
                 int32_t n = keys[first - 'A'];
                 if (len == 3) {
                     const char mid = identifier[1];
-                    if (mid == '#')
+                    if (mid == '#') {
                         n++;
-                    else if (mid == 'b')
+                    } else if (mid == 'b') {
                         n--;
-                    else {
+                    } else {
+                        /* it wasn't a key after all */
                         warn_once(UNDEFINED_IDENTIFIER, identifier);
                         return 0.0;
                     }
@@ -526,6 +529,8 @@ int main(int argc, char **argv) {
         error(YYPARSE_FAILED, NULL);
         return EXIT_FAILURE;
     }
+
+    /* print syntax tree */
     if (arguments.verbose)
         print_node(0, root);
 
@@ -540,26 +545,10 @@ int main(int argc, char **argv) {
     uint8_t data[datasize];
 
     const bool swap = swap_byteorder(arguments.format);
-    uint32_t o1, o2, o3, o4;
-    switch (arguments.bps) {
-    case 8:
-        break;
-    case 16:
-        o1 = swap ? 1 : 0;
-        o2 = swap ? 0 : 1;
-        break;
-    case 24:
-        o1 = swap ? 2 : 0;
-        o2 = 1;
-        o3 = swap ? 0 : 2;
-        break;
-    case 32:
-        o1 = swap ? 3 : 0;
-        o2 = swap ? 2 : 1;
-        o3 = swap ? 1 : 2;
-        o4 = swap ? 0 : 3;
-        break;
-    }
+    const uint32_t o1 = swap ? bytepersample - 1 : 0;
+    const uint32_t o2 = swap ? bytepersample - 2 : 1;
+    const uint32_t o3 = swap ? bytepersample - 3 : 2;
+    const uint32_t o4 = swap ? bytepersample - 4 : 3;
 
     for (uint32_t i = 0; i < datasize; i += blockalign) {
         const double t = ((double) i) / (double) bytepersecond;
@@ -607,7 +596,7 @@ int main(int argc, char **argv) {
 
     /* print remaining optional warnings */
     if (!arguments.nowarn) {
-        const uint8_t zero = (arguments.bps == 8 && arguments.format == WAVE) ? 0x7F : 0x00;
+        const uint8_t zero = (arguments.format == WAVE && arguments.bps == 8) ? 0x7F : 0x00;
         for (uint32_t i = 0; i < blockalign; i++) {
             if (data[i] != zero) {
                 warn(STARTS_ON_NON_ZERO_SAMPLE, NULL);
