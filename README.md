@@ -1,7 +1,7 @@
 # mixdown
 
-* [Man Page](manpage.html)
-* [Language Features](language.html)
-* [Error and Warning Messages](errors.html)
-* [Installation](installation.html)
+* [Man Page](docs/manpage.md)
+* [Language Description](docs/language.md)
+* [Error and Warning Messages](docs/errors.md)
+* [Installation](docs/installation.md)
 * [License](LICENSE)
