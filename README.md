@@ -16,7 +16,7 @@ mixdown -- a sound generator for the command line
 Bit per sample (8, 16, 24, 32) \[default=16\]  
 
 `-c`, `--channels=NUM`  
-Channels (1, 2) \[default=2\]  
+Channels \[default=2\]  
 
 `-f`, `--format=FMT`  
 File format (AIFF, WAVE) \[default=WAVE\]  

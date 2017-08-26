@@ -32,7 +32,7 @@ static char args_doc[] = "[[input=FILE] output=FILE]";
 
 static struct argp_option options[] = {
     { "bps",        'b', "NUM", 0, "Bit per sample (8, 16, 24, 32) [default=16]" },
-    { "channels",   'c', "NUM", 0, "Channels (1, 2) [default=2]" },
+    { "channels",   'c', "NUM", 0, "Channels [default=2]" },
     { "format",     'f', "FMT", 0, "File format (AIFF, WAVE) [default=WAVE]" },
     { "length",     'l', "NUM", 0, "Length in seconds [default=1.0]" },
     { "reverse",    'r', 0,     0, "Reverse samples" },
@@ -55,7 +55,7 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
         break;
     case 'c':
         i = atoi(arg);
-        if (i != 1 && i != 2)
+        if (i < 1)
             argp_usage(state);
         arguments->channels = i;
         break;
