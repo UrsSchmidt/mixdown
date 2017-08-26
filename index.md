@@ -1,7 +1,7 @@
-# mixdown
+# Index
 
-* [Read Me](README.html)
-* [Language Features](LANGUAGE.html)
-* [Error and Warning Messages](ERRORS.html)
+* [Man Page](manpage.html)
+* [Language Features](language.html)
+* [Error and Warning Messages](errors.html)
+* [Installation](installation.html)
 * [License](LICENSE)
-* [Installation](INSTALLATION.html)
