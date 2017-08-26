@@ -1,14 +1,16 @@
-# Needed Libraries
+# Installation
+
+## Needed Libraries
 
 * `argp.h`
 * `bison`
 * `flex`
 * `gcc`
 
-# Building
+## Building
 
 Run `build.sh`.
 
-# Installation
+## Installation
 
 On Ubuntu you can simply run `install.sh`. Otherwise just copy the generated executable, the man page and the gedit language file manually to the appropriate directories.
