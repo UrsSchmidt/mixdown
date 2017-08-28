@@ -55,17 +55,18 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
         break;
     case 'c':
         i = atoi(arg);
-        if (i < 1)
+        if (i <= 0)
             argp_usage(state);
         arguments->channels = i;
         break;
     case 'f':
-        if (!strcmp(arg, "AIFF"))
+        if (!strcmp(arg, "AIFF")) {
             arguments->format = AIFF;
-        else if (!strcmp(arg, "WAVE"))
+        } else if (!strcmp(arg, "WAVE")) {
             arguments->format = WAVE;
-        else
+        } else {
             argp_usage(state);
+        }
         break;
     case 'l':
         d = atof(arg);
