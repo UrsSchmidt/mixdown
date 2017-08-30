@@ -38,12 +38,13 @@ double phi(double delta) {
 double symm(double t, double n) {
     const double u = fmod(t, M_TAU);
     double temp0 = u - M_PI;
-    if (fabs(temp0) < (1.0 - n) * M_PI_2)
+    if (fabs(temp0) < (1.0 - n) * M_PI_2) {
         temp0 /= 1.0 - n;
-    else if (temp0 > 0.0)
+    } else if (temp0 > 0.0) {
         temp0 = M_PI - (M_PI - temp0) / (n + 1.0);
-    else if (temp0 < 0.0)
+    } else if (temp0 < 0.0) {
         temp0 = M_PI + (M_PI + temp0) / (n + 1.0);
+    }
     temp0 += M_PI;
     return t - u + temp0;
 }
