@@ -1,6 +1,6 @@
 # Index
 
-<code>echo 'sin(A4*t*tau)*fade(t,0,1,l,0);' | mixdown | aplay -q</code>
+`echo 'sin(A4*t*tau)*fade(t,0,1,l,0);' | mixdown | aplay -q`
 
 * [Man Page](manpage.html)
 * [Language Description](language.html)

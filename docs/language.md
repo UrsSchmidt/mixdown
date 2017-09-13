@@ -28,6 +28,8 @@ This will invert the sign of n1.
 `n1 ^ n2`  
 The n1 to the power of n2. This operator is right-associative.  
 
+Operator precedence is: `^` before `*/%` before `+-`.  
+
 `(some_expression)`  
 Expressions can be put in brackets to alter the order of precedence.  
 
