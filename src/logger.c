@@ -16,16 +16,6 @@ void error(const char *msg, const char *arg) {
     fprintf(stderr, "Error: %s\n", temp);
 }
 
-void warn(const char *msg, const char *arg) {
-    char temp[strlen(msg) + (arg ? strlen(arg) : 0)];
-    if (arg) {
-        sprintf(temp, msg, arg);
-    } else {
-        strcpy(temp, msg);
-    }
-    fprintf(stderr, "Warning: %s\n", temp);
-}
-
 unsigned long warn_once_arr[WARN_COUNT];
 size_t warn_once_ptr = 0;
 

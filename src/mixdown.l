@@ -14,18 +14,18 @@ char *strdup(const char *s);
 %option nounput
 
 %%
+[\t\n\r ]+                  /* skip */
+"%"                         return MOD;
 "("                         return BROPEN;
 ")"                         return BRCLOSE;
-","                         return COMMA;
-";"                         return SEMICOLON;
-"+"                         return ADD;
-"-"                         return SUB;
 "*"                         return MUL;
-"/"                         return DIV;
-"%"                         return MOD;
-"^"                         return POW;
-[A-Z_a-z][#0-9A-Z_a-z]*     yylval.identifier=strdup(yytext); return IDENTIFIER;
-[0-9]+("."[0-9]+)?          yylval.number=atof(yytext); return NUMBER;
+"+"                         return ADD;
+","                         return COMMA;
+"-"                         return SUB;
 "/*"([^*]|\*+[^*/])*\*+"/"  /* skip */
-[\t\n\r ]+                  /* skip */
+"/"                         return DIV;
+[0-9]+("."[0-9]+)?          yylval.number=atof(yytext); return NUMBER;
+";"                         return SEMICOLON;
+[A-Z_a-z][#0-9A-Z_a-z]*     yylval.identifier=strdup(yytext); return IDENTIFIER;
+"^"                         return POW;
 %%

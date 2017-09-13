@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
-#define SWAP(x,y) t=c[(x)];c[(x)]=c[(y)];c[(y)]=t;
+#define swap(x,y) t=c[(x)];c[(x)]=c[(y)];c[(y)]=t;
 
 void fwrite_int16(bool swap, const uint16_t s, FILE *file) {
     if (swap) {
@@ -34,11 +34,11 @@ void fwrite_long_double(bool swap, const long double ld, FILE *file) {
     if (swap) {
         uint8_t *c = (uint8_t*)&ld;
         uint8_t t;
-        SWAP(0, 9);
-        SWAP(1, 8);
-        SWAP(2, 7);
-        SWAP(3, 6);
-        SWAP(4, 5);
+        swap(0, 9);
+        swap(1, 8);
+        swap(2, 7);
+        swap(3, 6);
+        swap(4, 5);
         fwrite(c, 10, 1, file);
     } else {
         fwrite(&ld, 10, 1, file);

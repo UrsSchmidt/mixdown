@@ -78,7 +78,7 @@ Convert from degrees to radians \[0..tau\].
 
 `phi(delta)`  
 **delta**: The phase delta, usually a frequency.  
-Increments phi by (delta times tau divided by the sample rate), mods it by tau and returns the new value for phi. Not a real function.  
+Increments phi by (delta times tau divided by the sample rate), mods it by tau and returns the new value for phi. This function has side-effects.  
 **Example**:  
 `sin(phi(A4));`  
 
@@ -234,13 +234,13 @@ Generates a fade signal with two or more points.
 **b2**: Coefficient for x\[n-2\].  
 **a1**: Coefficient for y\[n-1\].  
 **a2**: Coefficient for y\[n-2\].  
-Filters a signal using a biquad (aka 2-pole) IIR filter with the given parameters. Not a real function.  
+Filters a signal using a biquad (aka 2-pole) IIR filter with the given parameters. This function has side-effects.  
 
 `filterlp2(x_n, fc, bw)`  
 **x_n**: The original signal x\[n\].  
 **fc**: The cutoff frequency in Hz.  
 **bw**: The bandwidth.  
-Filters a signal using a biquad (aka 2-pole) IIR lowpass filter with the given parameters. Not a real function.  
+Filters a signal using a biquad (aka 2-pole) IIR lowpass filter with the given parameters. This function has side-effects.  
 
 ## Arpeggiators
 

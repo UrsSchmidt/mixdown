@@ -18,8 +18,6 @@
 
 void error(const char *msg, const char *arg);
 
-void warn(const char *msg, const char *arg);
-
 void warn_once(const char *msg, const char *arg);
 
 #endif

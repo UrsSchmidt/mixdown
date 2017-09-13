@@ -546,10 +546,10 @@ int main(int argc, char **argv) {
     uint8_t data[datasize];
 
     const bool swap = swap_byteorder(arguments.format);
-    const uint32_t o1 = swap ? bytepersample - 1 : 0;
-    const uint32_t o2 = swap ? bytepersample - 2 : 1;
-    const uint32_t o3 = swap ? bytepersample - 3 : 2;
-    const uint32_t o4 = swap ? bytepersample - 4 : 3;
+    const size_t o1 = swap ? bytepersample - 1 : 0;
+    const size_t o2 = swap ? bytepersample - 2 : 1;
+    const size_t o3 = swap ? bytepersample - 3 : 2;
+    const size_t o4 = swap ? bytepersample - 4 : 3;
 
     for (uint32_t i = 0; i < datasize; i += blockalign) {
         const double t = ((double) i) / (double) bytepersecond;
@@ -565,7 +565,7 @@ int main(int argc, char **argv) {
                 warn_once(SAMPLE_CLIPPING, NULL);
         }
         for (uint32_t c = 0; c < arguments.channels; c++) {
-            const uint32_t offset = (arguments.reverse ? datasize - i - blockalign : i) + c * bytepersample;
+            const size_t offset = (arguments.reverse ? datasize - i - blockalign : i) + c * bytepersample;
             switch (arguments.bps) {
             case 8:
                 data[offset] = (uint8_t) (MAX_8 * ((arguments.format == WAVE) ? v + 1.0 : v));
@@ -600,13 +600,13 @@ int main(int argc, char **argv) {
         const uint8_t zero = (arguments.format == WAVE && arguments.bps == 8) ? 0x7F : 0x00;
         for (uint32_t i = 0; i < blockalign; i++) {
             if (data[i] != zero) {
-                warn(STARTS_ON_NON_ZERO_SAMPLE, NULL);
+                warn_once(STARTS_ON_NON_ZERO_SAMPLE, NULL);
                 break;
             }
         }
         for (uint32_t i = datasize - blockalign; i < datasize; i++) {
             if (data[i] != zero) {
-                warn(ENDS_ON_NON_ZERO_SAMPLE, NULL);
+                warn_once(ENDS_ON_NON_ZERO_SAMPLE, NULL);
                 break;
             }
         }

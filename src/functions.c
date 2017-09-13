@@ -244,6 +244,7 @@ double min(size_t n_count, double n_arr[]) {
 
 /* abs (fabs) */
 
+/* see: https://stackoverflow.com/a/1903975 */
 double sgn(double n) {
     return (n > 0.0) - (n < 0.0);
 }
