@@ -5,11 +5,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* suppress compiler warnings */
 int fileno(FILE *stream);
 
+/* see: https://stackoverflow.com/a/9427286 */
+/* suppress compiler warnings */
 char *strdup(const char *s);
 %}
 
+/* suppress compiler warnings */
 %option noinput
 %option nounput
 
@@ -24,8 +28,8 @@ char *strdup(const char *s);
 "-"                         return SUB;
 "/*"([^*]|\*+[^*/])*\*+"/"  /* skip */
 "/"                         return DIV;
-[0-9]+("."[0-9]+)?          yylval.number=atof(yytext); return NUMBER;
+[0-9]+("."[0-9]+)?          yylval.number = atof(yytext); return NUMBER;
 ";"                         return SEMICOLON;
-[A-Z_a-z][#0-9A-Z_a-z]*     yylval.identifier=strdup(yytext); return IDENTIFIER;
+[A-Z_a-z][#0-9A-Z_a-z]*     yylval.identifier = strdup(yytext); return IDENTIFIER;
 "^"                         return POW;
 %%

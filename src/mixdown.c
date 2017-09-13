@@ -573,20 +573,20 @@ int main(int argc, char **argv) {
             case 16: {
                 const int16_t sample = MAX_16 * v;
                 data[offset + o1] = sample & 0xFF;
-                data[offset + o2] = sample >> 8;
+                data[offset + o2] = (sample >> 8) & 0xFF;
             }   break;
             case 24: {
                 const int32_t sample = MAX_24 * v;
                 data[offset + o1] = sample & 0xFF;
                 data[offset + o2] = (sample >> 8) & 0xFF;
-                data[offset + o3] = sample >> 16;
+                data[offset + o3] = (sample >> 16) & 0xFF;
             }   break;
             case 32: {
                 const int32_t sample = MAX_32 * v;
                 data[offset + o1] = sample & 0xFF;
                 data[offset + o2] = (sample >> 8) & 0xFF;
                 data[offset + o3] = (sample >> 16) & 0xFF;
-                data[offset + o4] = sample >> 24;
+                data[offset + o4] = (sample >> 24) & 0xFF;
             }   break;
             }
         }

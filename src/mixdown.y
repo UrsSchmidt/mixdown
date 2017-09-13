@@ -4,13 +4,16 @@
 
 #include <stddef.h>
 
+/* suppress compiler warnings */
 int yylex();
 int yyparse();
 
+/* error handling */
 void yyerror(struct ast_node **root, const char *str) {
     error(str, NULL);
 }
 
+/* terminate scanning */
 int yywrap() {
     return 1;
 }
@@ -37,6 +40,7 @@ int yywrap() {
 %type <ast> mixdown expression argument_list argument
 
 %%
+
 mixdown
     : expression SEMICOLON { *root = $1; }
     ;
@@ -64,3 +68,5 @@ argument_list
 argument
     : expression
     ;
+
+%%
