@@ -39,7 +39,7 @@ Expressions can be put in brackets to alter the order of precedence.
 The base of the natural logarithm. `= 2.71828182845904523536`  
 
 `H`  
-The twelfth root of two. It is the ratio of the two frequencies of a semitone step on the twelve-tone equal temperament scale. `= 1.0594630943592952646`  
+The twelfth root of two. It is the ratio of the two frequencies of a semitone step on the twelve-tone equal temperament scale. `= 1.05946309435929526456`  
 
 `pi`  
 The ratio of a circle's circumference to its diameter. `= 3.14159265358979323846`  
