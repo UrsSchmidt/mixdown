@@ -23,6 +23,10 @@
           </include>
         </context>
 
+        <context id="number" style-ref="number">
+          <match>\b[0-9]+(\.[0-9]+)?\b</match>
+        </context>
+
         <context id="constant" style-ref="constant">
           <keyword>l</keyword>
           <keyword>t</keyword>
@@ -74,11 +78,7 @@
         </context>
 
         <context id="constant_key" style-ref="constant">
-          <match>(\b[A-G][#b]?[0-8]\b)</match>
-        </context>
-
-        <context id="number" style-ref="number">
-          <match>(\b[0-9]+(\.[0-9]+)?\b)</match>
+          <match>\b[A-G][#b]?[0-8]\b</match>
         </context>
 
       </include>
