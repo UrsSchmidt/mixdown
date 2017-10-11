@@ -9,7 +9,7 @@
     <style id="builtin" _name="Builtin Function" map-to="def:builtin"/>
     <style id="comment" _name="Comment" map-to="def:comment"/>
     <style id="constant" _name="Constants" map-to="def:constant"/>
-    <style id="number" _name="Number" map-to="def:decimal"/>
+    <style id="number" _name="Number" map-to="def:number"/>
   </styles>
   <definitions>
     <context id="mixdown">
