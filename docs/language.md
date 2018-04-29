@@ -100,6 +100,7 @@ Hard-syncs two signals.
 
 ## Oscillator Functions
 
+![circ](img/circ.png)  
 `circ(x)`  
 **x**: f\*t\*tau  
 Circle wave signal generator.  
@@ -107,6 +108,7 @@ Circle wave signal generator.
 **Example**:  
 `circ(A4*t*tau);`  
 
+![exptl](img/exptl.png)  
 `exptl(x)`  
 **x**: f\*t\*tau  
 Exponential wave signal generator.  
@@ -114,6 +116,7 @@ Exponential wave signal generator.
 **Example**:  
 `exptl(A4*t*tau);`  
 
+![moog](img/moog.png)  
 `moog(x)`  
 **x**: f\*t\*tau  
 Moog-like wave signal generator.  
@@ -121,6 +124,7 @@ Moog-like wave signal generator.
 **Example**:  
 `moog(A4*t*tau);`  
 
+![noise](img/noise.png)  
 `noise(x)`  
 **x**: f\*t\*tau  
 White noise generator (periodic).  
@@ -144,6 +148,7 @@ Square wave signal generator with pulse width.
 **Example**:  
 `pulse(A4*t*tau,0.5)*0.5;`  
 
+![sawf](img/sawf.png)  
 `sawf(x)`  
 **x**: f\*t\*tau  
 Falling sawtooth wave signal generator.  
@@ -151,6 +156,7 @@ Falling sawtooth wave signal generator.
 **Example**:  
 `sawf(A4*t*tau);`  
 
+![sawr](img/sawr.png)  
 `sawr(x)`  
 **x**: f\*t\*tau  
 Rising sawtooth wave signal generator.  
@@ -158,6 +164,7 @@ Rising sawtooth wave signal generator.
 **Example**:  
 `sawr(A4*t*tau);`  
 
+![squ](img/squ.png)  
 `squ(x)`  
 **x**: f\*t\*tau  
 Square wave signal generator.  
@@ -165,6 +172,7 @@ Square wave signal generator.
 **Example**:  
 `squ(A4*t*tau);`  
 
+![tri](img/tri.png)  
 `tri(x)`  
 **x**: f\*t\*tau  
 Triangle wave signal generator.  
@@ -256,18 +264,21 @@ Arpeggiates between all values given in n_arr.
 
 ## Math
 
+![sin](img/sin.png)  
 `sin(n)`  
 **n**: Some number.  
 The sine of n. Can also be used as an oscillator.  
 **Example**:  
 `sin(A4*t*tau);`  
 
+![cos](img/cos.png)  
 `cos(n)`  
 **n**: Some number.  
 The cosine of n. Can also be used as an oscillator.  
 **Example**:  
 `cos(A4*t*tau);`  
 
+![tan](img/tan.png)  
 `tan(n)`  
 **n**: Some number.  
 The tangent of n.  
