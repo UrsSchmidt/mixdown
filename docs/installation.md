@@ -6,6 +6,7 @@
 * `bison`
 * `flex`
 * `gcc`
+* `math.h`
 
 ## Building
 

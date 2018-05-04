@@ -80,7 +80,7 @@ Convert from degrees to radians \[0..tau\].
 
 `phi(delta)`  
 **delta**: The phase delta, usually a frequency.  
-Increments phi by (delta times tau divided by the sample rate), mods it by tau and returns the new value for phi. This function has side-effects.  
+Increments phi by (delta times tau divided by the sample rate), mods it by tau and returns the old value for phi. This function has side-effects.  
 **Example**:  
 `sin(phi(A4));`  
 
