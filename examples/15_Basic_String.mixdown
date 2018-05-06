@@ -1,3 +1,44 @@
 /* 15 - Basic String */
-/* TODO misses LFO */
-filterlp2(sawr(A4*t*tau)+pulse(A4*H^-0.08*t*tau,0.76)*0.75,A4*H^(80+(60/1.5)*sfs(t,0,0.5*l,22,30,0.66,49)-80),4)*sfs(t,0,0.5*l,29,23,1,35)*dB(-11.5);
+
+filterlp2(
+
+    /* Oscillator 1 */
+    sawr(A4*t*tau)+
+
+    /* Oscillator 2 */
+    pulse(
+        phi(
+            A4*
+            /* Detune */
+            H^-0.08*
+            /* LFO */
+            (1+0.1^2*2)^
+            tri(
+                symm(dB(14)*t*tau,-0.17)
+            )
+        ),
+        /* Puls-Sym */
+        0.76
+    )*
+    /* Mixer: Osc 2 */
+    0.75,
+
+    /* Filter */
+    A4*H^(
+        /* Cutoff */
+        80+
+        /* Env */
+        (60/1.5)*
+        /* Filter Env */
+        sfs(t,0,0.5*l,22,30,0.66,49)-
+        80
+    ),
+
+    4
+)*
+
+/* Amp Env */
+sfs(t,0,0.5*l,29,23,1,35)*
+
+/* Master: Level */
+dB(-11.5);
