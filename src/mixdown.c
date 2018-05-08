@@ -31,6 +31,7 @@ static char doc[] = "mixdown -- a sound generator for the command line\n"
 static char args_doc[] = "[[input=FILE] output=FILE]";
 
 static struct argp_option options[] = {
+    { "a4",         'a', "NUM", 0, "A4 pitch in Hz [default=440.0]" },
     { "bps",        'b', "NUM", 0, "Bit per sample (8, 16, 24, 32) [default=16]" },
     { "channels",   'c', "NUM", 0, "Channels [default=2]" },
     { "format",     'f', "FMT", 0, "File format (AIFF, WAVE) [default=WAVE]" },
@@ -47,6 +48,12 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
     uint32_t i;
     double d;
     switch (key) {
+    case 'a':
+        d = atof(arg);
+        if (d <= 0.0)
+            argp_usage(state);
+        arguments->a4 = d;
+        break;
     case 'b':
         i = atoi(arg);
         if (i != 8 && i != 16 && i != 24 && i != 32)
@@ -160,20 +167,20 @@ void print_node(uint32_t depth, struct ast_node *node) {
     }
 }
 
-double calculate_node(double l, double t, struct ast_node *node) {
+double calculate_node(double l, double t, double a4, struct ast_node *node) {
     if (!node)
         return 0.0;
     switch (node->node_type) {
     case NT_NEG:
-        return -calculate_node(l, t, ((struct unary_node*) node)->right);
+        return -calculate_node(l, t, a4, ((struct unary_node*) node)->right);
     case NT_ADD:
     case NT_SUB:
     case NT_MUL:
     case NT_DIV:
     case NT_MOD:
     case NT_POW: {
-        const double left = calculate_node(l, t, ((struct binary_node*) node)->left);
-        const double right = calculate_node(l, t, ((struct binary_node*) node)->right);
+        const double left = calculate_node(l, t, a4, ((struct binary_node*) node)->left);
+        const double right = calculate_node(l, t, a4, ((struct binary_node*) node)->right);
         switch (node->node_type) {
         case NT_ADD: return left + right;
         case NT_SUB: return left - right;
@@ -208,7 +215,7 @@ double calculate_node(double l, double t, struct ast_node *node) {
         double argv[MAX_FUNCTION_ARGS];
         for (uint32_t argc = 1; argc <= MAX_FUNCTION_ARGS; argc++) {
             if (an->node_type != NT_ARGUMENT_LIST) {
-                argv[argc - 1] = calculate_node(l, t, an);
+                argv[argc - 1] = calculate_node(l, t, a4, an);
                 if (!strcmp(identifier, "arp")) {
                     if (argc <= 2) {
                         warn_once(UNDEFINED_FUNCTION, identifier);
@@ -393,7 +400,7 @@ double calculate_node(double l, double t, struct ast_node *node) {
                 }
             }
             aln = (struct argument_list_node*) an;
-            argv[argc - 1] = calculate_node(l, t, aln->argument);
+            argv[argc - 1] = calculate_node(l, t, a4, aln->argument);
             an = aln->argument_list;
         }
         warn_once(UNDEFINED_FUNCTION, identifier);
@@ -439,7 +446,7 @@ double calculate_node(double l, double t, struct ast_node *node) {
                     }
                 }
                 n += 12 * (last - '0');
-                return pow(M_H, n - 49) * 440.0;
+                return pow(M_H, n - 49) * a4;
             }
         }
         warn_once(UNDEFINED_IDENTIFIER, identifier);
@@ -490,6 +497,7 @@ void free_node(struct ast_node *node) {
 int main(int argc, char **argv) {
     /* argp */
     struct arguments arguments;
+    arguments.a4 = 440.0;
     arguments.bps = 16;
     arguments.channels = 2;
     arguments.format = WAVE;
@@ -502,6 +510,7 @@ int main(int argc, char **argv) {
     arguments.output = NULL; /* stdout */
     argp_parse(&argp, argc, argv, 0, 0, &arguments);
     if (arguments.verbose) {
+        fprintf(stderr, "a4 = %f Hz\n", arguments.a4);
         fprintf(stderr, "bps = %i\n", arguments.bps);
         fprintf(stderr, "channels = %i\n", arguments.channels);
         fprintf(stderr, "format = %s\n", format_tostring(arguments.format));
@@ -553,7 +562,7 @@ int main(int argc, char **argv) {
 
     for (uint32_t i = 0; i < datasize; i += blockalign) {
         const double t = ((double) i) / (double) bytepersecond;
-        double v = calculate_node(arguments.length, t, root);
+        double v = calculate_node(arguments.length, t, arguments.a4, root);
         /* clipping */
         if (v > 1.0) {
             v = 1.0;

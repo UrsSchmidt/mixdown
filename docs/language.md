@@ -49,7 +49,7 @@ Two times pi. This is the period of all oscillators as well as the functions `si
 
 `[A-G][#b]?[0-8]`  
 Keys can be given using their scientific names. They will be converted to their frequency in Hz.  
-**Some examples**:  
+**Some examples for -a 440**:  
 `A4  /* = 440 */`  
 `C#4 /* = 277.183... */`  
 `Eb4 /* = 311.127... */`  

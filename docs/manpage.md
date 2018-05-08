@@ -10,6 +10,9 @@ mixdown -- a sound generator for the command line
 
 ## Options
 
+`-a`, `--a4=NUM`  
+A4 pitch in Hz \[default=440.0\]  
+
 `-b`, `--bps=NUM`  
 Bit per sample (8, 16, 24, 32) \[default=16\]  
 

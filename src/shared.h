@@ -11,6 +11,7 @@ typedef enum {
 
 struct arguments {
     /* options */
+    double a4;
     uint32_t bps, channels;
     FORMAT format;
     double length;
