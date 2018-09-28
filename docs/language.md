@@ -299,13 +299,13 @@ The arctan of n.
 **n**: Some number.  
 e to the power of n.  
 
+`lg(n)`  
+**n**: Some number.  
+The logarithm (base 10) of n.  
+
 `ln(n)`  
 **n**: some number  
 The natural logarithm (base e) of n.  
-
-`log10(n)`  
-**n**: Some number.  
-Logarithm (base 10) of n.  
 
 `sqrt(n)`  
 **n**: Some number.  

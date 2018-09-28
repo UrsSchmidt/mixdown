@@ -296,7 +296,7 @@ double calculate_node(double l, double t, double a4, struct ast_node *node) {
                         return exp(a);
                     if (!strcmp(identifier, "ln"))
                         return log(a);
-                    if (!strcmp(identifier, "log10"))
+                    if (!strcmp(identifier, "lg"))
                         return log10(a);
                     if (!strcmp(identifier, "sqrt"))
                         return sqrt(a);

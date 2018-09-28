@@ -66,8 +66,8 @@
           <keyword>acos</keyword>
           <keyword>atan</keyword>
           <keyword>exp</keyword>
+          <keyword>lg</keyword>
           <keyword>ln</keyword>
-          <keyword>log10</keyword>
           <keyword>sqrt</keyword>
           <keyword>ceil</keyword>
           <keyword>floor</keyword>

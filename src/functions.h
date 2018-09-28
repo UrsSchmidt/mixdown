@@ -90,7 +90,7 @@ double arp(double t, double t2, size_t n_count, double n_arr[]);
 
 /* ln (log) */
 
-/* log10 */
+/* lg (log10) */
 
 /* sqrt */
 
