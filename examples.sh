@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ ! -f 'mixdown' ]; then
-    ./build.sh
-fi
+# not necessary, since build.sh calls this as well
+#./clean.sh
+./build.sh
 
 if [ -f 'mixdown' ]; then
 
