@@ -72,35 +72,11 @@ double filterlp2(double x_n, double fc, double bw);
 
 double arp(double t, double t2, size_t n_count, double n_arr[]);
 
-/* math */
-
-/* sin */
-
-/* cos */
-
-/* tan */
-
-/* asin */
-
-/* acos */
-
-/* atan */
-
-/* ln (log) */
-
-/* lg (log10) */
-
-/* sqrt */
-
-/* ceil */
-
-/* floor */
+/* math functions */
 
 double max(size_t n_count, double n_arr[]);
 
 double min(size_t n_count, double n_arr[]);
-
-/* abs (fabs) */
 
 double sgn(double n);
 

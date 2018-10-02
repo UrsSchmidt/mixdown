@@ -198,29 +198,7 @@ double arp(double t, double t2, size_t n_count, double n_arr[]) {
     return n_arr[n_count - 1];
 }
 
-/* math */
-
-/* sin */
-
-/* cos */
-
-/* tan */
-
-/* asin */
-
-/* acos */
-
-/* atan */
-
-/* ln (log) */
-
-/* lg (log10) */
-
-/* sqrt */
-
-/* ceil */
-
-/* floor */
+/* math functions */
 
 double max(size_t n_count, double n_arr[]) {
     double result = n_arr[0];
@@ -239,8 +217,6 @@ double min(size_t n_count, double n_arr[]) {
     }
     return result;
 }
-
-/* abs (fabs) */
 
 /* see: https://stackoverflow.com/a/1903975 */
 double sgn(double n) {
