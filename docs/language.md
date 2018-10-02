@@ -179,7 +179,7 @@ Circle wave signal generator.
 **Example**:  
 `circ(A4*t*tau);`  
 
-`cos(x)`
+`cos(x)`  
 See above.  
 
 ![exptl](img/exptl.png)  
@@ -238,7 +238,7 @@ Rising sawtooth wave signal generator.
 **Example**:  
 `sawr(A4*t*tau);`  
 
-`sin(x)`
+`sin(x)`  
 See above.  
 
 ![squ](img/squ.png)  
@@ -249,7 +249,7 @@ Square wave signal generator.
 **Example**:  
 `squ(A4*t*tau);`  
 
-`tan(x)`
+`tan(x)`  
 See above.  
 
 ![tri](img/tri.png)  
