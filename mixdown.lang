@@ -28,52 +28,52 @@
         </context>
 
         <context id="constant" style-ref="constant">
-          <keyword>l</keyword>
-          <keyword>t</keyword>
-          <keyword>e</keyword>
           <keyword>H</keyword>
+          <keyword>e</keyword>
+          <keyword>l</keyword>
           <keyword>pi</keyword>
+          <keyword>t</keyword>
           <keyword>tau</keyword>
         </context>
 
         <context id="builtin" style-ref="builtin">
-          <keyword>dB</keyword>
-          <keyword>deg</keyword>
-          <keyword>phi</keyword>
-          <keyword>symm</keyword>
-          <keyword>sync</keyword>
-          <keyword>circ</keyword>
-          <keyword>exptl</keyword>
-          <keyword>moog</keyword>
-          <keyword>noise</keyword>
-          <keyword>parab</keyword>
-          <keyword>pulse</keyword>
-          <keyword>sawf</keyword>
-          <keyword>sawr</keyword>
-          <keyword>squ</keyword>
-          <keyword>tri</keyword>
+          <keyword>abs</keyword>
+          <keyword>acos</keyword>
           <keyword>adsr</keyword>
-          <keyword>sfs</keyword>
+          <keyword>arp</keyword>
+          <keyword>asin</keyword>
+          <keyword>atan</keyword>
+          <keyword>ceil</keyword>
+          <keyword>circ</keyword>
+          <keyword>cos</keyword>
+          <keyword>dB</keyword>
           <keyword>dahdsr</keyword>
+          <keyword>deg</keyword>
+          <keyword>exptl</keyword>
           <keyword>fade</keyword>
           <keyword>filter2</keyword>
           <keyword>filterlp2</keyword>
-          <keyword>arp</keyword>
-          <keyword>sin</keyword>
-          <keyword>cos</keyword>
-          <keyword>tan</keyword>
-          <keyword>asin</keyword>
-          <keyword>acos</keyword>
-          <keyword>atan</keyword>
+          <keyword>floor</keyword>
           <keyword>lg</keyword>
           <keyword>ln</keyword>
-          <keyword>sqrt</keyword>
-          <keyword>ceil</keyword>
-          <keyword>floor</keyword>
           <keyword>max</keyword>
           <keyword>min</keyword>
-          <keyword>abs</keyword>
+          <keyword>moog</keyword>
+          <keyword>noise</keyword>
+          <keyword>parab</keyword>
+          <keyword>phi</keyword>
+          <keyword>pulse</keyword>
+          <keyword>sawf</keyword>
+          <keyword>sawr</keyword>
+          <keyword>sfs</keyword>
           <keyword>sgn</keyword>
+          <keyword>sin</keyword>
+          <keyword>sqrt</keyword>
+          <keyword>squ</keyword>
+          <keyword>symm</keyword>
+          <keyword>sync</keyword>
+          <keyword>tan</keyword>
+          <keyword>tri</keyword>
         </context>
 
         <context id="constant_key" style-ref="constant">
