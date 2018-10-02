@@ -64,12 +64,25 @@ The current time in seconds \[0..l\].
 
 ## Math Functions
 
-![sin](img/sin.png)  
-`sin(n)`  
+`abs(n)`  
 **n**: Some number.  
-The sine of n. Can also be used as an oscillator.  
-**Example**:  
-`sin(A4*t*tau);`  
+The absolute value of n.  
+
+`acos(n)`  
+**n**: Some number.  
+The arccos of n.  
+
+`asin(n)`  
+**n**: Some number.  
+The arcsin of n.  
+
+`atan(n)`  
+**n**: Some number.  
+The arctan of n.  
+
+`ceil(n)`  
+**n**: Some number.  
+n rounded up to the next integer.  
 
 ![cos](img/cos.png)  
 `cos(n)`  
@@ -78,24 +91,9 @@ The cosine of n. Can also be used as an oscillator.
 **Example**:  
 `cos(A4*t*tau);`  
 
-![tan](img/tan.png)  
-`tan(n)`  
+`floor(n)`  
 **n**: Some number.  
-The tangent of n. Can also be used as an oscillator.  
-**Example**:  
-`tan(A4*t*tau);`  
-
-`asin(n)`  
-**n**: Some number.  
-The arcsin of n.  
-
-`acos(n)`  
-**n**: Some number.  
-The arccos of n.  
-
-`atan(n)`  
-**n**: Some number.  
-The arctan of n.  
+n rounded down to the next integer.  
 
 `lg(n)`  
 **n**: Some number.  
@@ -105,18 +103,6 @@ The logarithm (base 10) of n.
 **n**: some number  
 The natural logarithm (base e) of n.  
 
-`sqrt(n)`  
-**n**: Some number.  
-Square root of n.  
-
-`ceil(n)`  
-**n**: Some number.  
-n rounded up to the next integer.  
-
-`floor(n)`  
-**n**: Some number.  
-n rounded down to the next integer.  
-
 `max(n_arr...)`  
 **n_arr**: Some numbers.  
 The maximum of all given numbers.  
@@ -125,13 +111,27 @@ The maximum of all given numbers.
 **n_arr**: Some numbers.  
 The minimum of all given numbers.  
 
-`abs(n)`  
-**n**: Some number.  
-The absolute value of n.  
-
 `sgn(n)`  
 **n**: Some number.  
 The signum of n.  
+
+![sin](img/sin.png)  
+`sin(n)`  
+**n**: Some number.  
+The sine of n. Can also be used as an oscillator.  
+**Example**:  
+`sin(A4*t*tau);`  
+
+`sqrt(n)`  
+**n**: Some number.  
+Square root of n.  
+
+![tan](img/tan.png)  
+`tan(n)`  
+**n**: Some number.  
+The tangent of n. Can also be used as an oscillator.  
+**Example**:  
+`tan(A4*t*tau);`  
 
 ## Unit Conversion Functions
 
