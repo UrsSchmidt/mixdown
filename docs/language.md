@@ -262,7 +262,7 @@ Arpeggiates between all values given in n_arr.
 **Example**:  
 `sin(arp(t,1,C4,C#4,D4,D#4,E4)*t*tau);`  
 
-## Math
+## Math Functions
 
 ![sin](img/sin.png)  
 `sin(n)`  
