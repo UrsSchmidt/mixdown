@@ -80,6 +80,10 @@ The arcsin of n.
 **n**: Some number.  
 The arctan of n.  
 
+`cbrt(n)`  
+**n**: Some number.  
+The cube root of n.  
+
 `ceil(n)`  
 **n**: Some number.  
 n rounded up to the next integer.  
@@ -94,6 +98,10 @@ The cosine of n. Can also be used as an oscillator.
 `floor(n)`  
 **n**: Some number.  
 n rounded down to the next integer.  
+
+`lb(n)`  
+**n**: Some number.  
+The binary logarithm (base 2) of n.  
 
 `lg(n)`  
 **n**: Some number.  
@@ -111,6 +119,10 @@ The maximum of all given numbers.
 **n_arr**: Some numbers.  
 The minimum of all given numbers.  
 
+`round(n)`  
+**n**: Some number.  
+n rounded.  
+
 `sgn(n)`  
 **n**: Some number.  
 The signum of n.  
@@ -124,7 +136,7 @@ The sine of n. Can also be used as an oscillator.
 
 `sqrt(n)`  
 **n**: Some number.  
-Square root of n.  
+The square root of n.  
 
 ![tan](img/tan.png)  
 `tan(n)`  
@@ -132,6 +144,10 @@ Square root of n.
 The tangent of n. Can also be used as an oscillator.  
 **Example**:  
 `tan(A4*t*tau);`  
+
+`trunc(n)`  
+**n**: Some number.  
+n truncated.  
 
 ## Unit Conversion Functions
 

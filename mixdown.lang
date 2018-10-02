@@ -43,6 +43,7 @@
           <keyword>arp</keyword>
           <keyword>asin</keyword>
           <keyword>atan</keyword>
+          <keyword>cbrt</keyword>
           <keyword>ceil</keyword>
           <keyword>circ</keyword>
           <keyword>cos</keyword>
@@ -54,6 +55,7 @@
           <keyword>filter2</keyword>
           <keyword>filterlp2</keyword>
           <keyword>floor</keyword>
+          <keyword>lb</keyword>
           <keyword>lg</keyword>
           <keyword>ln</keyword>
           <keyword>max</keyword>
@@ -63,6 +65,7 @@
           <keyword>parab</keyword>
           <keyword>phi</keyword>
           <keyword>pulse</keyword>
+          <keyword>round</keyword>
           <keyword>sawf</keyword>
           <keyword>sawr</keyword>
           <keyword>sfs</keyword>
@@ -74,6 +77,7 @@
           <keyword>sync</keyword>
           <keyword>tan</keyword>
           <keyword>tri</keyword>
+          <keyword>trunc</keyword>
         </context>
 
         <context id="constant_key" style-ref="constant">

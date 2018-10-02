@@ -266,6 +266,8 @@ double calculate_node(double l, double t, double a4, struct ast_node *node) {
                         return asin(a);
                     if (!strcmp(identifier, "atan"))
                         return atan(a);
+                    if (!strcmp(identifier, "cbrt"))
+                        return cbrt(a);
                     if (!strcmp(identifier, "ceil"))
                         return ceil(a);
                     if (!strcmp(identifier, "circ"))
@@ -280,6 +282,8 @@ double calculate_node(double l, double t, double a4, struct ast_node *node) {
                         return exptl(a);
                     if (!strcmp(identifier, "floor"))
                         return floor(a);
+                    if (!strcmp(identifier, "lb"))
+                        return log2(a);
                     if (!strcmp(identifier, "lg"))
                         return log10(a);
                     if (!strcmp(identifier, "ln"))
@@ -290,6 +294,8 @@ double calculate_node(double l, double t, double a4, struct ast_node *node) {
                         return noise(a);
                     if (!strcmp(identifier, "phi"))
                         return phi(a);
+                    if (!strcmp(identifier, "round"))
+                        return round(a);
                     if (!strcmp(identifier, "sawf"))
                         return sawf(a);
                     if (!strcmp(identifier, "sawr"))
@@ -306,6 +312,8 @@ double calculate_node(double l, double t, double a4, struct ast_node *node) {
                         return tan(a);
                     if (!strcmp(identifier, "tri"))
                         return tri(a);
+                    if (!strcmp(identifier, "trunc"))
+                        return trunc(a);
                     warn_once(UNDEFINED_FUNCTION, identifier);
                     return 0.0;
                 }
