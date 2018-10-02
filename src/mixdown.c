@@ -241,13 +241,6 @@ double calculate_node(double l, double t, double a4, struct ast_node *node) {
                     }
                     return fade(argv[0], n_count, t_arr, y_arr);
                 }
-                if (!strcmp(identifier, "min")) {
-                    if (argc <= 0) {
-                        warn_once(UNDEFINED_FUNCTION, identifier);
-                        return 0.0;
-                    }
-                    return min(argc, argv);
-                }
                 if (!strcmp(identifier, "max")) {
                     if (argc <= 0) {
                         warn_once(UNDEFINED_FUNCTION, identifier);
@@ -255,70 +248,70 @@ double calculate_node(double l, double t, double a4, struct ast_node *node) {
                     }
                     return max(argc, argv);
                 }
+                if (!strcmp(identifier, "min")) {
+                    if (argc <= 0) {
+                        warn_once(UNDEFINED_FUNCTION, identifier);
+                        return 0.0;
+                    }
+                    return min(argc, argv);
+                }
                 switch (argc) {
                 case 1: {
                     const double a = argv[0];
+                    if (!strcmp(identifier, "abs"))
+                        return fabs(a);
+                    if (!strcmp(identifier, "acos"))
+                        return acos(a);
+                    if (!strcmp(identifier, "asin"))
+                        return asin(a);
+                    if (!strcmp(identifier, "atan"))
+                        return atan(a);
+                    if (!strcmp(identifier, "ceil"))
+                        return ceil(a);
+                    if (!strcmp(identifier, "circ"))
+                        return circ(a);
+                    if (!strcmp(identifier, "cos"))
+                        return cos(a);
                     if (!strcmp(identifier, "dB"))
                         return dB(a);
                     if (!strcmp(identifier, "deg"))
                         return deg(a);
-                    if (!strcmp(identifier, "phi"))
-                        return phi(a);
-                    if (!strcmp(identifier, "circ"))
-                        return circ(a);
                     if (!strcmp(identifier, "exptl"))
                         return exptl(a);
+                    if (!strcmp(identifier, "floor"))
+                        return floor(a);
+                    if (!strcmp(identifier, "lg"))
+                        return log10(a);
+                    if (!strcmp(identifier, "ln"))
+                        return log(a);
                     if (!strcmp(identifier, "moog"))
                         return moog(a);
                     if (!strcmp(identifier, "noise"))
                         return noise(a);
+                    if (!strcmp(identifier, "phi"))
+                        return phi(a);
                     if (!strcmp(identifier, "sawf"))
                         return sawf(a);
                     if (!strcmp(identifier, "sawr"))
                         return sawr(a);
-                    if (!strcmp(identifier, "squ"))
-                        return squ(a);
-                    if (!strcmp(identifier, "tri"))
-                        return tri(a);
-                    if (!strcmp(identifier, "sin"))
-                        return sin(a);
-                    if (!strcmp(identifier, "cos"))
-                        return cos(a);
-                    if (!strcmp(identifier, "tan"))
-                        return tan(a);
-                    if (!strcmp(identifier, "asin"))
-                        return asin(a);
-                    if (!strcmp(identifier, "acos"))
-                        return acos(a);
-                    if (!strcmp(identifier, "atan"))
-                        return atan(a);
-                    if (!strcmp(identifier, "ln"))
-                        return log(a);
-                    if (!strcmp(identifier, "lg"))
-                        return log10(a);
-                    if (!strcmp(identifier, "sqrt"))
-                        return sqrt(a);
-                    if (!strcmp(identifier, "ceil"))
-                        return ceil(a);
-                    if (!strcmp(identifier, "floor"))
-                        return floor(a);
-                    if (!strcmp(identifier, "abs"))
-                        return fabs(a);
                     if (!strcmp(identifier, "sgn"))
                         return sgn(a);
+                    if (!strcmp(identifier, "sin"))
+                        return sin(a);
+                    if (!strcmp(identifier, "sqrt"))
+                        return sqrt(a);
+                    if (!strcmp(identifier, "squ"))
+                        return squ(a);
+                    if (!strcmp(identifier, "tan"))
+                        return tan(a);
+                    if (!strcmp(identifier, "tri"))
+                        return tri(a);
                     warn_once(UNDEFINED_FUNCTION, identifier);
                     return 0.0;
                 }
                 case 2: {
                     const double a = argv[0];
                     const double b = argv[1];
-                    if (!strcmp(identifier, "symm")) {
-                        if (!in(-1.0, b, 1.0))
-                            warn_once(CONSTRAINT_VIOLATION, identifier);
-                        return symm(a, b);
-                    }
-                    if (!strcmp(identifier, "sync"))
-                        return sync(a, b);
                     if (!strcmp(identifier, "parab")) {
                         if (!(1.0 <= b))
                             warn_once(CONSTRAINT_VIOLATION, identifier);
@@ -329,6 +322,13 @@ double calculate_node(double l, double t, double a4, struct ast_node *node) {
                             warn_once(CONSTRAINT_VIOLATION, identifier);
                         return pulse(a, b);
                     }
+                    if (!strcmp(identifier, "symm")) {
+                        if (!in(-1.0, b, 1.0))
+                            warn_once(CONSTRAINT_VIOLATION, identifier);
+                        return symm(a, b);
+                    }
+                    if (!strcmp(identifier, "sync"))
+                        return sync(a, b);
                     warn_once(UNDEFINED_FUNCTION, identifier);
                     return 0.0;
                 }
@@ -409,16 +409,16 @@ double calculate_node(double l, double t, double a4, struct ast_node *node) {
         return 0.0;
     case NT_IDENTIFIER: {
         const char *identifier = ((struct identifier_node*) node)->identifier;
-        if (!strcmp(identifier, "l"))
-            return l;
-        if (!strcmp(identifier, "t"))
-            return t;
-        if (!strcmp(identifier, "e"))
-            return M_E;
         if (!strcmp(identifier, "H"))
             return M_H;
+        if (!strcmp(identifier, "e"))
+            return M_E;
+        if (!strcmp(identifier, "l"))
+            return l;
         if (!strcmp(identifier, "pi"))
             return M_PI;
+        if (!strcmp(identifier, "t"))
+            return t;
         if (!strcmp(identifier, "tau"))
             return M_TAU;
         /* is it a key? */
