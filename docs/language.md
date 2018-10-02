@@ -45,7 +45,7 @@ The twelfth root of two. It is the ratio of the two frequencies of a semitone st
 The ratio of a circle's circumference to its diameter. `= 3.14159265358979323846`  
 
 `tau`  
-Two times pi. This is the period of all oscillators as well as the functions `sin` and `cos`. `= 6.28318530717958647693`  
+Two times pi. This is the period of all oscillators listed below. `= 6.28318530717958647693`  
 
 `[A-G][#b]?[0-8]`  
 Keys can be given using their scientific names. They will be converted to their frequency in Hz.  
@@ -179,6 +179,9 @@ Circle wave signal generator.
 **Example**:  
 `circ(A4*t*tau);`  
 
+`cos(x)`
+See above.  
+
 ![exptl](img/exptl.png)  
 `exptl(x)`  
 **x**: f\*t\*tau  
@@ -235,6 +238,9 @@ Rising sawtooth wave signal generator.
 **Example**:  
 `sawr(A4*t*tau);`  
 
+`sin(x)`
+See above.  
+
 ![squ](img/squ.png)  
 `squ(x)`  
 **x**: f\*t\*tau  
@@ -242,6 +248,9 @@ Square wave signal generator.
 **y**: 1,-1  
 **Example**:  
 `squ(A4*t*tau);`  
+
+`tan(x)`
+See above.  
 
 ![tri](img/tri.png)  
 `tri(x)`  
