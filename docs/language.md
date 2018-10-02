@@ -281,7 +281,9 @@ The cosine of n. Can also be used as an oscillator.
 ![tan](img/tan.png)  
 `tan(n)`  
 **n**: Some number.  
-The tangent of n.  
+The tangent of n. Can also be used as an oscillator.  
+**Example**:  
+`tan(A4*t*tau);`  
 
 `asin(n)`  
 **n**: Some number.  
