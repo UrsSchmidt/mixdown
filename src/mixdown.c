@@ -292,8 +292,6 @@ double calculate_node(double l, double t, double a4, struct ast_node *node) {
                         return acos(a);
                     if (!strcmp(identifier, "atan"))
                         return atan(a);
-                    if (!strcmp(identifier, "exp"))
-                        return exp(a);
                     if (!strcmp(identifier, "ln"))
                         return log(a);
                     if (!strcmp(identifier, "lg"))

@@ -295,10 +295,6 @@ The arccos of n.
 **n**: Some number.  
 The arctan of n.  
 
-`exp(n)`  
-**n**: Some number.  
-e to the power of n.  
-
 `lg(n)`  
 **n**: Some number.  
 The logarithm (base 10) of n.  

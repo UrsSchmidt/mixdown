@@ -86,8 +86,6 @@ double arp(double t, double t2, size_t n_count, double n_arr[]);
 
 /* atan */
 
-/* exp */
-
 /* ln (log) */
 
 /* lg (log10) */
