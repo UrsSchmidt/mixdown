@@ -16,6 +16,14 @@
 
 void init_functions(double samplerate);
 
+/* math functions */
+
+double max(size_t n_count, double n_arr[]);
+
+double min(size_t n_count, double n_arr[]);
+
+double sgn(double n);
+
 /* unit conversion functions */
 
 double dB(double n);
@@ -71,13 +79,5 @@ double filterlp2(double x_n, double fc, double bw);
 /* arpeggiators */
 
 double arp(double t, double t2, size_t n_count, double n_arr[]);
-
-/* math functions */
-
-double max(size_t n_count, double n_arr[]);
-
-double min(size_t n_count, double n_arr[]);
-
-double sgn(double n);
 
 #endif

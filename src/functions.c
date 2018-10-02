@@ -17,6 +17,31 @@ void init_functions(double samplerate) {
     _y_n_2 = 0.0;
 }
 
+/* math functions */
+
+double max(size_t n_count, double n_arr[]) {
+    double result = n_arr[0];
+    for (size_t i = 1; i < n_count; i++) {
+        if (n_arr[i] > result)
+            result = n_arr[i];
+    }
+    return result;
+}
+
+double min(size_t n_count, double n_arr[]) {
+    double result = n_arr[0];
+    for (size_t i = 1; i < n_count; i++) {
+        if (n_arr[i] < result)
+            result = n_arr[i];
+    }
+    return result;
+}
+
+/* see: https://stackoverflow.com/a/1903975 */
+double sgn(double n) {
+    return (n > 0.0) - (n < 0.0);
+}
+
 /* unit conversion functions */
 
 double dB(double n) {
@@ -196,29 +221,4 @@ double arp(double t, double t2, size_t n_count, double n_arr[]) {
             return n_arr[i];
     }
     return n_arr[n_count - 1];
-}
-
-/* math functions */
-
-double max(size_t n_count, double n_arr[]) {
-    double result = n_arr[0];
-    for (size_t i = 1; i < n_count; i++) {
-        if (n_arr[i] > result)
-            result = n_arr[i];
-    }
-    return result;
-}
-
-double min(size_t n_count, double n_arr[]) {
-    double result = n_arr[0];
-    for (size_t i = 1; i < n_count; i++) {
-        if (n_arr[i] < result)
-            result = n_arr[i];
-    }
-    return result;
-}
-
-/* see: https://stackoverflow.com/a/1903975 */
-double sgn(double n) {
-    return (n > 0.0) - (n < 0.0);
 }
