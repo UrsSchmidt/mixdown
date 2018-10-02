@@ -131,8 +131,8 @@ double sfs(double t, double t_on, double t_off, double a, double d, double s, do
     if (t < t_on + t_a)
         return (t - t_on) / t_a;
     if (t < t_off)
-        return pow(M_E, -pow(10.0, 3.0 - d / 20.0) * (t - t_on - t_a)) * (1.0 - s) + s;
-    return pow(M_E, -pow(10.0, 3.0 - r / 20.0) * (t - t_off)) * (pow(M_E, -pow(10.0, 3.0 - d / 20.0) * t_off) * (1.0 - s) + s);
+        return exp(-pow(10.0, 3.0 - d / 20.0) * (t - t_on - t_a)) * (1.0 - s) + s;
+    return exp(-pow(10.0, 3.0 - r / 20.0) * (t - t_off)) * (exp(-pow(10.0, 3.0 - d / 20.0) * t_off) * (1.0 - s) + s);
 }
 
 double dahdsr(double t, double t_on, double t_off, double dl, double a, double h, double dc, double s, double r) {
