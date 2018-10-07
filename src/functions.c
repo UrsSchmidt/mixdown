@@ -60,8 +60,8 @@ double phi(double delta) {
     return temp0;
 }
 
-double symm(double t, double n) {
-    const double u = fmod(t, M_TAU);
+double symm(double x, double n) {
+    const double u = fmod(x, M_TAU);
     double temp0 = u - M_PI;
     if (fabs(temp0) < (1.0 - n) * M_PI_2) {
         temp0 /= 1.0 - n;
@@ -71,7 +71,7 @@ double symm(double t, double n) {
         temp0 = M_PI + (M_PI + temp0) / (n + 1.0);
     }
     temp0 += M_PI;
-    return t - u + temp0;
+    return x - u + temp0;
 }
 
 double sync(double x1, double x2) {

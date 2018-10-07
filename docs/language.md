@@ -171,8 +171,8 @@ Increments phi by (delta times tau divided by the sample rate), mods it by tau a
 **Example**:  
 `sin(phi(A4));`  
 
-`symm(t, n)`  
-**t**: t  
+`symm(x, n)`  
+**x**: x  
 **n**: The symmetry \[-1..1\], 0: neutral.  
 Applies symmetry to an arbitrary signal like `sin` or `tri`.  
 **Example**:  

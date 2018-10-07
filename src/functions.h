@@ -34,7 +34,7 @@ double deg(double n);
 
 double phi(double delta);
 
-double symm(double t, double n);
+double symm(double x, double n);
 
 double sync(double x1, double x2);
 
