@@ -1,2 +1,32 @@
 /* 13 - Basic Mini */
-filterlp2(sawr(A4*t*tau)+sawr(A4*H^0.04*t*tau),A4*H^(70+(64/1.5)*sfs(t,0,0.5*l,18,28,0.74,31)-80),4)*sfs(t,0,0.5*l,0,23,0.85,19)*dB(-11.5);
+
+filterlp2(
+    /* Oscillator 1 */
+    sawr(A4*t*tau)+
+
+    /* Oscillator 2 */
+    sawr(A4*
+        /* Oscillator 2: Detune */
+        H^0.04*
+        t*tau
+    ),
+
+    /* Filter */
+    A4*H^(
+        /* Filter: Cutoff */
+        70+
+        /* Filter: Env */
+        (64/1.5)*
+        /* Filter Env */
+        sfs(t,0,0.5*l,18,28,0.74,31)-
+        80
+    ),
+
+    4
+)*
+
+/* Amp Env */
+sfs(t,0,0.5*l,0,23,0.85,19)*
+
+/* Master: Level */
+dB(-11.5);

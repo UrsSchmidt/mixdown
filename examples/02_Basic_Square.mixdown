@@ -1,2 +1,7 @@
 /* 2 - Basic Square */
-squ(A4*t*tau)*dB(-11);
+
+/* Oscillator 1 */
+squ(A4*t*tau)*
+
+/* Master: Level */
+dB(-11);

@@ -1,2 +1,40 @@
 /* 12 - Basic Sub Bass */
-filterlp2(pulse(A4*H^-24*t*tau,0.59)+sawr(A4*H^-36*t*tau)*0.76,A4*H^(47+(90/1.5)*sfs(t,0,0.5*l,0,33,0.29,31)-80),4)*sfs(t,0,0.5*l,0,23,0.85,19)*dB(-8);
+
+filterlp2(
+    /* Oscillator 1 */
+    pulse(A4*
+        /* Oscillator 1: Interval */
+        H^-24*
+        t*tau,
+        /* Oscillator 1: Symm */
+        0.59
+    )+
+
+    /* Oscillator 2 */
+    sawr(A4*
+        /* Oscillator 2: Interval */
+        H^-36*
+        t*tau
+    )*
+    /* Mixer: Osc 2 */
+    0.76,
+
+    /* Filter */
+    A4*H^(
+        /* Filter: Cutoff */
+        47+
+        /* Filter: Env */
+        (90/1.5)*
+        /* Filter Env */
+        sfs(t,0,0.5*l,0,33,0.29,31)-
+        80
+    ),
+
+    4
+)*
+
+/* Amp Env */
+sfs(t,0,0.5*l,0,23,0.85,19)*
+
+/* Master: Level */
+dB(-8);

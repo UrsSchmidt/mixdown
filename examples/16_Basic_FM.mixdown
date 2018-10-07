@@ -1,2 +1,19 @@
 /* 16 - Basic FM */
-parab(phi(A4*H^27+parab(A4*t*tau,2)*sfs(t,0,0.5*l,0,66,0.03,56)*0.6*2750),2)*sfs(t,0,0.5*l,0,61,0,53)*dB(-8);
+
+/* Oscillator 2 */
+sin(phi(A4*
+    /* Oscillator 2: Interval */
+    H^27+
+    /* Oscillator 1 */
+    parab(A4*t*tau,2)*
+    /* Filter Env */
+    sfs(t,0,0.5*l,0,66,0.03,56)*
+    /* Oscillator 1: FM */
+    0.6*2750
+))*
+
+/* Amp Env */
+sfs(t,0,0.5*l,0,61,0,53)*
+
+/* Master: Level */
+dB(-8);

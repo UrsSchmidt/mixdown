@@ -1,2 +1,25 @@
 /* 8 - Basic PWM */
-pulse(A4*t*tau,min(0.2+sin(symm(dB(-2)*t*tau,0.25))*0.77^2,1))*0.92*dB(-12);
+
+/* Oscillator 1 */
+pulse(A4*t*tau,min(
+    /* Oscillator 1: Symm */
+    0.2+
+    /* LFO */
+    sin(symm(
+        /* LFO: Rate */
+        dB(-2)*
+        t*tau,
+        /* LFO: Symm */
+        0.25
+    ))*
+    /* LFO: Amount */
+    0.77^
+    2,
+
+    1
+))*
+/* Mixer: Osc 1 */
+0.92*
+
+/* Master: Level */
+dB(-12);

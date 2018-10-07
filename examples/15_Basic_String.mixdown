@@ -9,15 +9,19 @@ filterlp2(
     pulse(
         phi(
             A4*
-            /* Detune */
+            /* Oscillator 2: Detune */
             H^-0.08*
             /* LFO */
             (1+0.1^2*2)^
-            tri(
-                symm(dB(14)*t*tau,-0.17)
-            )
+            tri(symm(
+                /* LFO: Rate */
+                dB(14)*
+                t*tau,
+                /* LFO: Symm */
+                -0.17
+            ))
         ),
-        /* Puls-Sym */
+        /* Oscillator 2: Puls-Sym */
         0.76
     )*
     /* Mixer: Osc 2 */
@@ -25,9 +29,9 @@ filterlp2(
 
     /* Filter */
     A4*H^(
-        /* Cutoff */
+        /* Filter: Cutoff */
         80+
-        /* Env */
+        /* Filter: Env */
         (60/1.5)*
         /* Filter Env */
         sfs(t,0,0.5*l,22,30,0.66,49)-

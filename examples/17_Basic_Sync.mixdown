@@ -1,2 +1,25 @@
 /* 17 - Basic Sync */
-pulse(sync(A4*t*tau,A4*H^14*t*tau*4^(sfs(t,0,0.5*l,22,57,0.03,0)*0.54)),0.11)*sfs(t,0,0.5*l,0,15,1,0)*dB(-12.5);
+
+/* Oscillator 2 */
+pulse(
+    /* Snc */
+    sync(A4*t*tau,A4*
+        /* Oscillator 2: Interval */
+        H^14*
+        t*tau*
+        4^(
+            /* Filter Env */
+            sfs(t,0,0.5*l,22,57,0.03,0)*
+            /* Filt-Env -> Osc: Amount */
+            0.54
+        )
+    ),
+    /* Oscillator 2: Puls-Sym */
+    0.11
+)*
+
+/* Amp Env */
+sfs(t,0,0.5*l,0,15,1,0)*
+
+/* Master: Level */
+dB(-12.5);

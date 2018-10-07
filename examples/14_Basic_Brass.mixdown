@@ -1,2 +1,37 @@
 /* 14 - Basic Brass */
-filterlp2(sawr(A4*t*tau*4^(sfs(t,0,0.5*l,22,40,0.77,31)*0.02))+sawr(A4*H^0.24*t*tau),A4*H^(79+(64/1.5)*sfs(t,0,0.5*l,22,40,0.77,31)-80),4)*sfs(t,0,0.5*l,0,23,1,0)*dB(-12);
+
+filterlp2(
+    /* Oscillator 1 */
+    sawr(A4*t*tau*4^(
+        /* Filter Env */
+        sfs(t,0,0.5*l,22,40,0.77,31)*
+        /* Filt-Env -> Osc: Amount */
+        0.02
+    ))+
+
+    /* Oscillator 2 */
+    sawr(A4*
+        /* Oscillator 2: Detune */
+        H^0.24*
+        t*tau
+    ),
+
+    /* Filter */
+    A4*H^(
+        /* Filter: Cutoff */
+        79+
+        /* Filter: Env */
+        (64/1.5)*
+        /* Filter Env */
+        sfs(t,0,0.5*l,22,40,0.77,31)-
+        80
+    ),
+
+    4
+)*
+
+/* Amp Env */
+sfs(t,0,0.5*l,0,23,1,0)*
+
+/* Master: Level */
+dB(-12);

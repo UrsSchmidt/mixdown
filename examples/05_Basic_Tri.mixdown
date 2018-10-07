@@ -1,2 +1,7 @@
 /* 5 - Basic Tri */
-tri(A4*t*tau)*dB(-11);
+
+/* Oscillator 1 */
+tri(A4*t*tau)*
+
+/* Master: Level */
+dB(-11);

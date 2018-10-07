@@ -1,2 +1,7 @@
 /* 4 - Basic Sine */
-parab(A4*t*tau,2)*dB(-11);
+
+/* Oscillator 1 */
+parab(A4*t*tau,2)*
+
+/* Master: Level */
+dB(-11);
