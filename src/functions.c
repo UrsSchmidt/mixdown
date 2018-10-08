@@ -3,18 +3,10 @@
 #include <math.h>
 #include <stddef.h>
 
-double _phi;
 double _samplerate;
 
-double _x_n_1, _x_n_2, _y_n_1, _y_n_2;
-
 void init_functions(double samplerate) {
-    _phi = 0.0;
     _samplerate = samplerate;
-    _x_n_1 = 0.0;
-    _x_n_2 = 0.0;
-    _y_n_1 = 0.0;
-    _y_n_2 = 0.0;
 }
 
 /* math functions */
@@ -55,6 +47,7 @@ double deg(double n) {
 /* pre-oscillator functions */
 
 double phi(double delta) {
+    static double _phi = 0.0;
     const double temp0 = _phi;
     _phi = fmod(_phi + delta * M_TAU / _samplerate, M_TAU);
     return temp0;
@@ -190,6 +183,10 @@ double fade(double t, size_t n_count, double t_arr[], double y_arr[]) {
 
 /* see: https://en.wikipedia.org/wiki/Digital_biquad_filter#Direct_form_1 */
 double filter2(double x_n, double b0, double b1, double b2, double a1, double a2) {
+    static double _x_n_1 = 0.0;
+    static double _x_n_2 = 0.0;
+    static double _y_n_1 = 0.0;
+    static double _y_n_2 = 0.0;
     const double y_n = b0 * x_n + b1 * _x_n_1 + b2 * _x_n_2 - a1 * _y_n_1 - a2 * _y_n_2;
     _x_n_2 = _x_n_1;
     _x_n_1 = x_n;
