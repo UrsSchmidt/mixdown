@@ -1,0 +1,6 @@
+*.c linguist-language=C
+*.h linguist-language=C
+*.l linguist-language=Lex
+*.lang linguist-language=XML
+*.sh linguist-language=Shell
+*.y linguist-language=Yacc
