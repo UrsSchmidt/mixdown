@@ -1,4 +1,5 @@
 # mixdown
+`mixdown` is a sound generator for the command line.
 
 `echo 'sin(A4*t*tau)*fade(t,0,1,l,0);' | mixdown | aplay -q`
 
