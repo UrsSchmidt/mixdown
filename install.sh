@@ -10,8 +10,8 @@ if [ -f 'mixdown' ]; then
     fi
 fi
 
-if [ -d '/usr/share/gtksourceview-3.0/language-specs/' ]; then
-    cp 'mixdown.lang' '/usr/share/gtksourceview-3.0/language-specs/'
+if [ -d '/usr/share/gtksourceview-4/language-specs/' ]; then
+    cp 'mixdown.lang' '/usr/share/gtksourceview-4/language-specs/'
 fi
 
 if [ -d '/usr/local/share/man/man1/' ]; then
