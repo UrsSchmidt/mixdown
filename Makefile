@@ -1,6 +1,8 @@
 MAKEFLAGS+=--no-builtin-rules
 
-DST=mixdown
+TITLE=mixdown
+TARGET_EXEC=$(TITLE)
+EXTENSION=.$(TITLE)
 
 # build target
 
@@ -16,30 +18,30 @@ YFLAGS=-d
 LEX=flex
 LFLAGS=
 
-PARSERY=$(SRC)/mixdown.y
+PARSERY=$(SRC)/$(TITLE).y
 PARSERC=$(SRC)/y.tab.c
 PARSERH=$(SRC)/y.tab.h
 
-LEXERL=$(SRC)/mixdown.l
+LEXERL=$(SRC)/$(TITLE).l
 LEXERC=$(SRC)/lex.yy.c
 
 CFILES=$(filter-out $(PARSERC) $(LEXERC), $(wildcard $(SRC)/*.c))
 HFILES=$(filter-out $(PARSERH), $(wildcard $(SRC)/*.h))
 
-$(DST): $(CFILES) $(HFILES) $(PARSERC) $(PARSERH) $(LEXERC)
-	$(CC) $(CFLAGS) -o $(DST) $(CFILES) $(PARSERC) $(LEXERC) $(LDLIBS)
+$(TARGET_EXEC): $(CFILES) $(HFILES) $(PARSERC) $(PARSERH) $(LEXERC)
+	$(CC) $(CFLAGS) -o $@ $(CFILES) $(PARSERC) $(LEXERC) $(LDLIBS)
 
 $(PARSERC) $(PARSERH): $(PARSERY)
-	$(YACC) $(YFLAGS) -o $(PARSERC) $(PARSERY)
+	$(YACC) $(YFLAGS) -o $@ $(PARSERY)
 
 $(LEXERC): $(LEXERL)
-	$(LEX) $(LFLAGS) -o $(LEXERC) $(LEXERL)
+	$(LEX) $(LFLAGS) -o $@ $(LEXERL)
 
 # install/uninstall targets
 
-FILE_BIN=$(DST)
-FILE_MAN=mixdown.1
-FILE_LANG=mixdown.lang
+FILE_BIN=$(TARGET_EXEC)
+FILE_MAN=$(TITLE).1
+FILE_LANG=$(TITLE).lang
 INSTALL_DIR_BIN=/usr/local/bin/
 INSTALL_DIR_MAN=/usr/local/share/man/man1/
 INSTALL_DIR_LANG=/usr/share/gtksourceview-4/language-specs/
@@ -83,24 +85,21 @@ endif
 
 EXAMPLES_SRC=examples
 EXAMPLES_DST=examples_wave
-MIXDOWN=./$(DST)
+MIXDOWN=./$(TARGET_EXEC)
 MIXDOWNFLAGS=-l 2 -w
-MIXDOWNFILES=$(wildcard $(EXAMPLES_SRC)/*.mixdown)
-WAVFILES=$(addprefix $(EXAMPLES_DST)/, $(notdir $(patsubst $(EXAMPLES_SRC)/%.mixdown, %.wav, $(MIXDOWNFILES))))
+MIXDOWNFILES=$(wildcard $(EXAMPLES_SRC)/*$(EXTENSION))
+WAVFILES=$(patsubst $(EXAMPLES_SRC)/%$(EXTENSION),$(EXAMPLES_DST)/%.wav,$(MIXDOWNFILES))
 
 .PHONY: examples
 examples: $(WAVFILES)
-	@echo done
 
-$(WAVFILES): $(EXAMPLES_DST)/%.wav: $(EXAMPLES_SRC)/%.mixdown $(DST) $(EXAMPLES_DST)
+$(WAVFILES): $(EXAMPLES_DST)/%.wav: $(EXAMPLES_SRC)/%$(EXTENSION) $(TARGET_EXEC)
+	mkdir -p $(dir $@)
 	$(MIXDOWN) $(MIXDOWNFLAGS) $< $@
-
-$(EXAMPLES_DST):
-	mkdir -p $(EXAMPLES_DST)
 
 # clean target
 
 .PHONY: clean
 clean:
-	rm -f $(DST) $(PARSERC) $(PARSERH) $(LEXERC)
+	rm -f $(TARGET_EXEC) $(PARSERC) $(PARSERH) $(LEXERC)
 	rm -rf $(EXAMPLES_DST)
