@@ -3,7 +3,7 @@
 #include "logger.h"
 #include "output.h"
 #include "shared.h"
-#include "y.tab.h"
+#include "../gen/y.tab.h"
 
 #include <argp.h>
 #include <math.h>

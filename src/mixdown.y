@@ -1,6 +1,6 @@
 %{
-#include "ast.h"
-#include "logger.h"
+#include "../src/ast.h"
+#include "../src/logger.h"
 
 #include <stddef.h>
 

@@ -4,6 +4,9 @@ TITLE=mixdown
 TARGET_EXEC=$(TITLE)
 EXTENSION=.$(TITLE)
 
+GEN=gen
+OBJ=obj
+
 # build target
 
 SRC=src
@@ -19,23 +22,35 @@ LEX=flex
 LFLAGS=
 
 PARSERY=$(SRC)/$(TITLE).y
-PARSERC=$(SRC)/y.tab.c
-PARSERH=$(SRC)/y.tab.h
+PARSERC=$(GEN)/y.tab.c
+PARSERH=$(GEN)/y.tab.h
 
 LEXERL=$(SRC)/$(TITLE).l
-LEXERC=$(SRC)/lex.yy.c
+LEXERC=$(GEN)/lex.yy.c
 
-CFILES=$(filter-out $(PARSERC) $(LEXERC), $(wildcard $(SRC)/*.c))
-HFILES=$(filter-out $(PARSERH), $(wildcard $(SRC)/*.h))
+SRCCFILES=$(wildcard $(SRC)/*.c)
+SRCOFILES=$(SRCCFILES:$(SRC)/%.c=$(OBJ)/%.o)
+GENCFILES=$(PARSERC) $(LEXERC)
+GENOFILES=$(GENCFILES:$(GEN)/%.c=$(OBJ)/%.o)
 
-$(TARGET_EXEC): $(CFILES) $(HFILES) $(PARSERC) $(PARSERH) $(LEXERC)
-	$(CC) $(CFLAGS) -o $@ $(CFILES) $(PARSERC) $(LEXERC) $(LDLIBS)
+$(TARGET_EXEC): $(SRCOFILES) $(GENOFILES)
+	$(CC) -o $@ $^ $(LDLIBS)
 
-$(PARSERC) $(PARSERH): $(PARSERY)
-	$(YACC) $(YFLAGS) -o $@ $(PARSERY)
+$(GENOFILES): $(OBJ)/%.o: $(GEN)/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(SRCOFILES): $(OBJ)/%.o: $(SRC)/%.c $(GENCFILES)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+$(PARSERC): $(PARSERY)
+	@mkdir -p $(dir $@)
+	$(YACC) $(YFLAGS) -o $@ $^
 
 $(LEXERC): $(LEXERL)
-	$(LEX) $(LFLAGS) -o $@ $(LEXERL)
+	@mkdir -p $(dir $@)
+	$(LEX) $(LFLAGS) -o $@ $^
 
 # install/uninstall targets
 
@@ -88,13 +103,13 @@ EXAMPLES_DST=examples_wave
 MIXDOWN=./$(TARGET_EXEC)
 MIXDOWNFLAGS=-l 2 -w
 MIXDOWNFILES=$(wildcard $(EXAMPLES_SRC)/*$(EXTENSION))
-WAVFILES=$(patsubst $(EXAMPLES_SRC)/%$(EXTENSION),$(EXAMPLES_DST)/%.wav,$(MIXDOWNFILES))
+WAVFILES=$(MIXDOWNFILES:$(EXAMPLES_SRC)/%$(EXTENSION)=$(EXAMPLES_DST)/%.wav)
 
 .PHONY: examples
 examples: $(WAVFILES)
 
 $(WAVFILES): $(EXAMPLES_DST)/%.wav: $(EXAMPLES_SRC)/%$(EXTENSION) $(TARGET_EXEC)
-	mkdir -p $(dir $@)
+	@mkdir -p $(dir $@)
 	$(MIXDOWN) $(MIXDOWNFLAGS) $< $@
 
 # clean target
@@ -103,3 +118,5 @@ $(WAVFILES): $(EXAMPLES_DST)/%.wav: $(EXAMPLES_SRC)/%$(EXTENSION) $(TARGET_EXEC)
 clean:
 	rm -f $(TARGET_EXEC) $(PARSERC) $(PARSERH) $(LEXERC)
 	rm -rf $(EXAMPLES_DST)
+	rm -rf $(OBJ)
+	rm -rf $(GEN)

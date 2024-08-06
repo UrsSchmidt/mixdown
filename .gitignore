@@ -1,7 +1,6 @@
 /etc/
 /examples_wave/
-/src/lex.yy.c
-/src/y.tab.c
-/src/y.tab.h
+/gen/
+/obj/
 /temp/
 /mixdown
